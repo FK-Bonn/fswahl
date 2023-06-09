@@ -1,8 +1,22 @@
-# Nuxt 3 Minimal Starter
+# fswahl
+
+Generator für Fachschaftswahlen an der Rheinischen Friedrich-Wilhelms-Universität Bonn.
+
+## Unterstützte Wahlverfahren
+
+- Personenwahl FSV/FSR als Urnenwahl
+- Personenwahl FSV/FSR mit Option der Wahlvollversammlung nach § 27 FSWO
+
+## Nicht unterstützte Wahlverfahren
+
+- Option der Verhältniswahl nach § 28 FSWO
+
+
+## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+### Setup
 
 Make sure to install the dependencies:
 
@@ -17,7 +31,7 @@ npm install
 pnpm install
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on `http://localhost:3000`
 
@@ -25,7 +39,7 @@ Start the development server on `http://localhost:3000`
 npm run dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
