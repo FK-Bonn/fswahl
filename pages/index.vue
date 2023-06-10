@@ -3,6 +3,25 @@ import {useElectionProperties} from "~/composables/states";
 
 const electionProperties = useElectionProperties();
 const calculatedElectionProperties = computed(() => new PropertyCalculator(electionProperties.value))
+
+const addElectoralRegisterPlace = () => {
+  electionProperties.value.electoralRegisterPlaces.push({
+    date: '',
+    timeStart: '',
+    timeEnd: '',
+    locationDE: '',
+    locationEN: '',
+  })
+}
+const addPollingPlace = () => {
+  electionProperties.value.pollingPlaces.push({
+    date: '',
+    timeStart: '',
+    timeEnd: '',
+    locationDE: '',
+    locationEN: '',
+  })
+}
 </script>
 
 <template>
@@ -81,6 +100,127 @@ const calculatedElectionProperties = computed(() => new PropertyCalculator(elect
       Anzahl der in den FSR zu wählenden Personen laut Fachschaftssatzung (mind. 5, max. 9)</label>
     <div class="col-lg-2">
       <input type="number" class="form-control" id="available-seats" v-model="electionProperties.seats">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="main-deadline" class="col-lg-3 col-form-label">Gemeinsame Frist zur Einreichung von Kandidaturen,
+      zur Einreichung von Briefwahlanträgen, und
+      zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis</label>
+    <div class="col-lg-2">
+      <input type="datetime-local" class="form-control" id="main-deadline" v-model="electionProperties.mainDeadline">
+    </div>
+    <div class="col-lg-2 text-success">
+      {{ calculatedElectionProperties.mainDeadlineWeekday }}
+    </div>
+  </div>
+
+  <p>Auslegung des Wählendenverzeichnisses</p>
+
+  <table id="wvz_table" class="table table-striped table-hover">
+    <tbody>
+    <tr>
+      <th>Datum</th>
+      <th colspan="2">Uhrzeit</th>
+      <th>Ort (DE)</th>
+      <th>Ort (EN)</th>
+      <th></th>
+    </tr>
+    <template v-for="(place, index) in electionProperties.electoralRegisterPlaces">
+      <EditableEventPlaceRow :item="place" :remove="()=>{electionProperties.electoralRegisterPlaces.splice(index, 1)}"/>
+    </template>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="5">
+        <button class="btn btn-outline-secondary btn-sm" @click="addElectoralRegisterPlace">Hinzufügen</button>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+
+  <p>Wahllokale</p>
+
+  <table id="pollingplaces_table" class="table table-striped table-hover">
+    <tbody>
+    <tr>
+      <th>Datum</th>
+      <th colspan="2">Uhrzeit</th>
+      <th>Ort (DE)</th>
+      <th>Ort (EN)</th>
+      <th></th>
+    </tr>
+    <template v-for="(place, index) in electionProperties.pollingPlaces">
+      <EditableEventPlaceRow :item="place" :remove="()=>{electionProperties.pollingPlaces.splice(index, 1)}"/>
+    </template>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="5">
+        <button class="btn btn-outline-secondary btn-sm" @click="addPollingPlace">Hinzufügen</button>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+
+
+  <div class="row mb-3">
+    <label for="counting-datetime" class="col-lg-3 col-form-label">Zeitpunkt der Auszählung</label>
+    <div class="col-lg-2">
+      <input type="datetime-local" class="form-control" id="counting-datetime"
+             v-model="electionProperties.countingDateTime">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="counting-location" class="col-lg-3 col-form-label">Ort der Auszählung (DE)</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="counting-location" v-model="electionProperties.countingLocationDE">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="counting-location" class="col-lg-3 col-form-label">Ort der Auszählung (EN)</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="counting-location" v-model="electionProperties.countingLocationEN">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="constituent-assembly-datetime" class="col-lg-3 col-form-label">Zeitpunkt der konstituierenden
+      Sitzung</label>
+    <div class="col-lg-2">
+      <input type="datetime-local" class="form-control" id="constituent-assembly-datetime"
+             v-model="electionProperties.constituentAssemblyDateTime">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="constituent-assembly-location" class="col-lg-3 col-form-label">Ort der konstituierenden Sitzung (DE)</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="constituent-assembly-location"
+             v-model="electionProperties.constituentAssemblyLocationDE">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="constituent-assembly-location" class="col-lg-3 col-form-label">Ort der konstituierenden Sitzung (EN)</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="constituent-assembly-location"
+             v-model="electionProperties.constituentAssemblyLocationEN">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="supervisor-name" class="col-lg-3 col-form-label">Name der Wahlleitung</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="supervisor-name" v-model="electionProperties.supervisorName">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="supervisor-email" class="col-lg-3 col-form-label">E-Mail-Adresse der Wahlleitung</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="supervisor-email" v-model="electionProperties.supervisorEmail">
     </div>
   </div>
 

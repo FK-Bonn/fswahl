@@ -11,11 +11,7 @@ export class PropertyCalculator {
         if (this.properties.dateStart) {
             const date = new Date(this.properties.dateStart);
             date.setDate(date.getDate() - numberOfDays)
-            return date.toLocaleDateString('de-de', {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit"
-            });
+            return this.date(date);
         }
         return '';
     }
@@ -24,11 +20,7 @@ export class PropertyCalculator {
         if (this.properties.dateEnd) {
             const date = new Date(this.properties.dateEnd);
             date.setDate(date.getDate() + numberOfDays)
-            return date.toLocaleDateString('de-de', {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit"
-            });
+            return this.date(date);
         }
         return '';
     }
@@ -36,17 +28,25 @@ export class PropertyCalculator {
 
     get dateStartWeekday(): string {
         if (this.properties.dateStart) {
-            return new Date(this.properties.dateStart).toLocaleString('de-de', {weekday: 'long'})
+            return this.weekday(this.properties.dateStart);
         }
         return '';
     }
 
     get dateEndWeekday(): string {
         if (this.properties.dateEnd) {
-            return new Date(this.properties.dateEnd).toLocaleString('de-de', {weekday: 'long'})
+            return this.weekday(this.properties.dateEnd);
         }
         return '';
     }
+
+    get mainDeadlineWeekday(): string {
+        if (this.properties.mainDeadline) {
+            return this.weekday(this.properties.mainDeadline);
+        }
+        return '';
+    }
+
 
     get setElectionDate(): string {
         return this.beforeElection(30);
@@ -132,5 +132,144 @@ export class PropertyCalculator {
         } else {
             return this.properties.voters > 500;
         }
+    }
+
+    get committeeName(): string | undefined {
+        if (this.electFSV) {
+            return 'Fachschaftsvertretung';
+        }
+        if (this.electFSR) {
+            return 'Fachschaftsrat';
+        }
+    }
+
+    get committeeDeterminer(): string | undefined {
+        if (this.electFSV) {
+            return 'die';
+        }
+        if (this.electFSR) {
+            return 'der';
+        }
+    }
+
+    get committeeNameGenitive(): string | undefined {
+        if (this.electFSV) {
+            return 'Fachschaftsvertretung';
+        }
+        if (this.electFSR) {
+            return 'Fachschaftsrats';
+        }
+    }
+
+    get committeeDeterminerGenitive(): string | undefined {
+        if (this.electFSV) {
+            return 'der';
+        }
+        if (this.electFSR) {
+            return 'des';
+        }
+    }
+
+    get committeeDeterminerAccusative(): string | undefined {
+        if (this.electFSV) {
+            return 'die';
+        }
+        if (this.electFSR) {
+            return 'den';
+        }
+    }
+
+    get seats(): number | undefined {
+        if (this.properties.seats) {
+            return this.properties.seats;
+        }
+        if (this.electFSR) {
+            return 5;
+        }
+        if (this.electFSV) {
+            if (this.properties.voters) {
+                if (this.properties.voters > 2000) {
+                    return 19;
+                }
+                if (this.properties.voters > 1000) {
+                    return 15;
+                }
+                if (this.properties.voters > 500) {
+                    return 11;
+                }
+                return 7;
+            }
+        }
+        return undefined;
+    }
+
+    get mainDeadlineDate(): string | undefined {
+        if (this.properties.mainDeadline) {
+            return this.date(this.properties.mainDeadline);
+        }
+        return undefined;
+    }
+
+    get mainDeadlineTime(): string | undefined {
+        if (this.properties.mainDeadline) {
+            return this.time(this.properties.mainDeadline);
+        }
+        return undefined;
+    }
+
+    get countingDate(): string | undefined {
+        if (this.properties.countingDateTime) {
+            return this.date(this.properties.countingDateTime);
+        }
+        return undefined;
+    }
+
+    get countingTime(): string | undefined {
+        if (this.properties.countingDateTime) {
+            return this.time(this.properties.countingDateTime);
+        }
+        return undefined;
+    }
+
+    get constituentAssemblyDate(): string | undefined {
+        if (this.properties.constituentAssemblyDateTime) {
+            return this.date(this.properties.constituentAssemblyDateTime);
+        }
+        return undefined;
+    }
+
+
+    get constituentAssemblyTime(): string | undefined {
+        if (this.properties.constituentAssemblyDateTime) {
+            return this.time(this.properties.constituentAssemblyDateTime);
+        }
+        return undefined;
+    }
+
+    protected date(inputDate: string | Date) {
+        return dateDE(inputDate);
+    }
+
+    protected time(inputDate: string | Date) {
+        return timeDE(inputDate);
+    }
+
+    protected weekday(inputDate: string | Date) {
+        return weekdayDE(inputDate);
+    }
+}
+
+export class PropertyCalculatorEN extends PropertyCalculator {
+
+    protected date(inputDate: string | Date) {
+        return dateEN(inputDate);
+    }
+
+    protected time(inputDate: string | Date) {
+        return timeEN(inputDate);
+    }
+
+    protected weekday(inputDate: string | Date) {
+        return weekdayEN(inputDate);
     }
 }

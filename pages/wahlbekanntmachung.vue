@@ -1,9 +1,14 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-<h1>Wahlbekanntmachung</h1>
+
+  <AnnouncementOfElectionDE/>
+
+  <hr>
+
+  <AnnouncementOfElectionEN/>
+
 </template>
 
 <style scoped>
