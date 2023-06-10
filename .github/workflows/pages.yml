@@ -4,6 +4,9 @@
 #
 name: Deploy Nuxt site to Pages
 
+env:
+  NUXT_APP_BASE_URL: '/fswahl/'
+
 on:
   # Runs on pushes targeting the default branch
   push:
