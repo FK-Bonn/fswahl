@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import {useElectionProperties} from "~/composables/states";
+import CountingOptions from "~/components/options/CountingOptions.vue";
+import ConstituentAssemblyOptions from "~/components/options/ConstituentAssemblyOptions.vue";
+import ElectionSupervisorOptions from "~/components/options/ElectionSupervisorOptions.vue";
 
 const electionProperties = useElectionProperties();
 const calculatedElectionProperties = computed(() => new PropertyCalculator(electionProperties.value))
@@ -163,88 +166,13 @@ const addPollingPlace = () => {
     </tfoot>
   </table>
 
+  <CountingOptions/>
 
-  <div class="row mb-3">
-    <label for="counting-datetime" class="col-lg-3 col-form-label">Zeitpunkt der Auszählung</label>
-    <div class="col-lg-2">
-      <input type="datetime-local" class="form-control" id="counting-datetime"
-             v-model="electionProperties.countingDateTime">
-    </div>
-  </div>
+  <ConstituentAssemblyOptions/>
 
-  <div class="row mb-3">
-    <label for="counting-location" class="col-lg-3 col-form-label">Ort der Auszählung (DE)</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="counting-location" v-model="electionProperties.countingLocationDE">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="counting-location" class="col-lg-3 col-form-label">Ort der Auszählung (EN)</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="counting-location" v-model="electionProperties.countingLocationEN">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="constituent-assembly-datetime" class="col-lg-3 col-form-label">Zeitpunkt der konstituierenden
-      Sitzung</label>
-    <div class="col-lg-2">
-      <input type="datetime-local" class="form-control" id="constituent-assembly-datetime"
-             v-model="electionProperties.constituentAssemblyDateTime">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="constituent-assembly-location" class="col-lg-3 col-form-label">Ort der konstituierenden Sitzung (DE)</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="constituent-assembly-location"
-             v-model="electionProperties.constituentAssemblyLocationDE">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="constituent-assembly-location" class="col-lg-3 col-form-label">Ort der konstituierenden Sitzung (EN)</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="constituent-assembly-location"
-             v-model="electionProperties.constituentAssemblyLocationEN">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="supervisor-name" class="col-lg-3 col-form-label">Name der Wahlleitung</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="supervisor-name" v-model="electionProperties.supervisorName">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="supervisor-email" class="col-lg-3 col-form-label">E-Mail-Adresse der Wahlleitung</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="supervisor-email" v-model="electionProperties.supervisorEmail">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="result-location" class="col-lg-3 col-form-label">Ort der Veröffentlichung des Wahlergebnisses</label>
-    <div class="col-lg-2">
-      <input type="text" class="form-control" id="result-location" v-model="electionProperties.resultLocation">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="result-date" class="col-lg-3 col-form-label">Datum der Veröffentlichung des Wahlergebnisses</label>
-    <div class="col-lg-2">
-      <input type="date" class="form-control" id="result-date" v-model="electionProperties.resultDate">
-    </div>
-  </div>
+  <ElectionSupervisorOptions/>
 
 
-  <div class="row mb-3">
-    <label for="invalid-votes" class="col-lg-3 col-form-label">Anzahl der ungültigen Stimmen</label>
-    <div class="col-lg-2">
-      <input type="number" class="form-control" id="invalid-votes" v-model="electionProperties.invalidVotes">
-    </div>
-  </div>
 
 </template>
 

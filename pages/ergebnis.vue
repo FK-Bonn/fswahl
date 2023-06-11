@@ -45,7 +45,30 @@ const addIndividualVote = () => {
       </tr>
       </tfoot>
     </table>
+
+    <div class="row mb-3">
+      <label for="invalid-votes" class="col-lg-3 col-form-label">Anzahl der ungültigen Stimmen</label>
+      <div class="col-lg-2">
+        <input type="number" class="form-control" id="invalid-votes" v-model="electionProperties.invalidVotes">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="result-location" class="col-lg-3 col-form-label">Ort der Veröffentlichung des Wahlergebnisses</label>
+      <div class="col-lg-2">
+        <input type="text" class="form-control" id="result-location" v-model="electionProperties.resultLocation">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="result-date" class="col-lg-3 col-form-label">Datum der Veröffentlichung des Wahlergebnisses</label>
+      <div class="col-lg-2">
+        <input type="date" class="form-control" id="result-date" v-model="electionProperties.resultDate">
+      </div>
+    </div>
+  <hr>
   </div>
+
 
   <div id="wahlergebnis">
     <h2 style="text-align:center;"> Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}
