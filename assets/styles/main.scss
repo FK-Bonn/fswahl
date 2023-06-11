@@ -1,1 +1,8 @@
 @import "bootstrap/scss/bootstrap";
+
+
+@media print {
+  nav {
+    display: none !important;
+  }
+}

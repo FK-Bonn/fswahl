@@ -150,5 +150,7 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
 </template>
 
 <style scoped>
-
+h1, h2 {
+  text-align: center;
+}
 </style>
