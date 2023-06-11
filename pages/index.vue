@@ -48,7 +48,7 @@ const addPollingPlace = () => {
       {{ calculatedElectionProperties.dateStartWeekday }}
     </div>
   </div>
-  <div class="row mb-3">
+  <div class="row mb-3" v-if="!electionProperties.plenum">
     <label for="dateend" class="col-lg-3 col-form-label">Letzter Wahltag</label>
     <div class="col-lg-2">
       <input type="date" class="form-control" id="dateend" v-model="electionProperties.dateEnd">
@@ -103,6 +103,23 @@ const addPollingPlace = () => {
       Anzahl der in den FSR zu wählenden Personen laut Fachschaftssatzung (mind. 5, max. 9)</label>
     <div class="col-lg-2">
       <input type="number" class="form-control" id="available-seats" v-model="electionProperties.seats">
+    </div>
+  </div>
+  <div class="row mb-3" v-if="calculatedElectionProperties.checkPlenum">
+    <span>Schreibt die Fachschaftssatzung die Wahl in einer Wahlvollversammlung vor?</span>
+    <div class="form-check ms-3">
+      <input class="form-check-input" type="radio" name="plenum"
+             id="plenum-no" :value="false" v-model="electionProperties.plenum">
+      <label class="form-check-label" for="plenum-no">
+        Nein
+      </label>
+    </div>
+    <div class="form-check ms-3">
+      <input class="form-check-input" type="radio" name="plenum"
+             :value="true" id="plenum-yes" v-model="electionProperties.plenum">
+      <label class="form-check-label" for="plenum-yes">
+        Ja
+      </label>
     </div>
   </div>
 

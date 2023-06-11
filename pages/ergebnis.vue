@@ -71,20 +71,34 @@ const addIndividualVote = () => {
 
 
   <div id="wahlergebnis">
-    <h2 style="text-align:center;"> Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}
+    <h2> Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}
     </span> <span class="fsvfsr">{{ propDE.committeeName }}</span> der Fachschaft <span
         class="fachschaft">{{ electionProperties.fsName }}</span> der
       Rheinischen Friedrich-Wilhelms-Universität Bonn </h2>
-    <h3 style="text-align:center;">Election of the student representatives for Fachschaft <span
+    <h3>Election of the student representatives for Fachschaft <span
         class="fachschaft">{{ electionProperties.fsName }}</span> at
       the University of Bonn </h3>
-    <h1 style="text-align:center;"> - Wahlergebnis - </h1>
-    <h2 style="text-align:center;"> - Election result - </h2>
-    <h4 style="text-align:center;"><span class="ort_wahlergebnis">{{ electionProperties.resultLocation }}</span>, <span
+    <h1> - Wahlergebnis - </h1>
+    <h2> - Election result - </h2>
+    <h4><span class="ort_wahlergebnis">{{ electionProperties.resultLocation }}</span>, <span
         class="datum_wahlergebnis">{{ propDE.resultDate }}</span>
     </h4>
     <br>
-    <div class="row">
+    <div class="row" v-if="electionProperties.plenum">
+      <div class="col-sm-6">
+        <p>Das Ergebnis der Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}</span> <span
+            class="fsvfsr">{{ propDE.committeeName }}</span>
+          der Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span> <span
+              class="wahlzeitraum">am {{ propDE.firstElectionDay }}</span> lautet wie folgt.</p>
+      </div>
+      <div class="col-sm-6">
+        <p>The election result for the election of the student representatives (<span
+            class="fsvfsr">{{ propEN.committeeName }}</span>)
+          for Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span> <span
+              class="wahlzeitraum_engl">on {{ propEN.firstElectionDay }}</span> is listed below.</p>
+      </div>
+    </div>
+    <div class="row" v-else>
       <div class="col-sm-6">
         <p>Das Ergebnis der Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}</span> <span
             class="fsvfsr">{{ propDE.committeeName }}</span>
@@ -182,7 +196,23 @@ const addIndividualVote = () => {
           the Fachschaftenkonferenz in writing or by email to fsen@asta.uni-bonn.de (c/o Fachschaftenreferat). </p>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="electionProperties.plenum">
+      <div class="col-sm-6">
+
+        <h3>Konstituierende Sitzung</h3>
+
+        <p>Die konstituierende Sitzung fand im Anschluss an die Bekanntgabe des Wahlergebnisses
+          auf der Wahlvollversammlung statt.</p>
+      </div>
+      <div class="col-sm-6">
+
+        <h3>Constituent assembly</h3>
+
+        <p>The constituent assembly took place following the announcement of the election result
+          during the election plenum.</p>
+      </div>
+    </div>
+    <div class="row" v-else>
       <div class="col-sm-6">
 
         <h3>Konstituierende Sitzung</h3>
@@ -232,6 +262,9 @@ const addIndividualVote = () => {
 </template>
 
 <style scoped>
+h1, h2, h3, h4 {
+  text-align: center;
+}
 @media print {
 
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {

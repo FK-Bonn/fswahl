@@ -112,6 +112,14 @@ export class PropertyCalculator {
         }
     }
 
+    get checkPlenum(): boolean | undefined {
+        if (this.properties.eligibleVoters === null) {
+            return undefined;
+        } else {
+            return this.properties.eligibleVoters <= 500;
+        }
+    }
+
     get checkStatutesCustomNumberOfPersons(): boolean | undefined {
         return this.electFSR === true;
     }

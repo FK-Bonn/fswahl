@@ -20,7 +20,9 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
     <span class="diedenfsvfsr">{{ prop.committeeDeterminerAccusative }}</span> <span
         class="fsvfsr">{{ prop.committeeName }}</span> zu wählen.</p>
 
-  <p>Die Wahl findet im Zeitraum <span class="wahlzeitraum">vom
+  <p v-if="electionProperties.plenum">Die Wahl findet am <span class="wahlzeitraum">{{ prop.firstElectionDay }}</span>
+    als Wahlvollversammlung statt.</p>
+  <p v-else>Die Wahl findet im Zeitraum <span class="wahlzeitraum">vom
           {{ prop.firstElectionDay }} bis zum
           {{ prop.lastElectionDay }}</span> statt.</p>
 
@@ -60,6 +62,21 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
 
   <p>(Die Anforderungen an einen Wahlvorschlag ergeben sich aus § 14 FSWO (Siehe
     http://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#§14)</p>
+
+  <p v-if="electionProperties.plenum">Ebenso ist es möglich, auf der Wahlvollversammlung die Kandidatur zu erklären.</p>
+
+  <template v-if="electionProperties.plenum">
+    <h3>Tagesordnung der Wahlvollversammlung</h3>
+
+    <ol>
+      <li>Eröffnung</li>
+      <li>Aufnahme weiterer Kandidaturen</li>
+      <li>Vorstellung der Kandidaturen</li>
+      <li>Wahl</li>
+      <li>Auszählung und Verlesung des Wahlergebnisses</li>
+      <li>Konstituierung des FSR / der FSV</li>
+    </ol>
+  </template>
 
   <h3>Wahlsystem</h3>
 
@@ -135,7 +152,11 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
 
   <h3>Auszählung</h3>
 
-  <p>Die öffentliche Auszählung der Wahl findet am <span
+  <p v-if="electionProperties.plenum">
+    Die öffentliche Auszählung findet während der Wahlvollversammlung in Anschluss an den Wahlvorgang statt.
+  </p>
+
+  <p v-else>Die öffentliche Auszählung der Wahl findet am <span
       class="datum_auszaehlung">{{ prop.countingDate }}</span> um <span
       class="uhrzeit_auszaehlung">{{ prop.countingTime }}</span> Uhr <span
       class="ort_auszaehlung">{{ electionProperties.countingLocationDE }}</span> statt.</p>
@@ -143,7 +164,14 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
 
   <h3>Konstituierende Sitzung</h3>
 
-  <p>Die konstituierende Sitzung <span class="derdesfsvfsr">der</span> neu gewählten <span class="fsvfsr">Fachschaftsvertretung</span>
+  <p v-if="electionProperties.plenum">
+    Die konstituierende Sitzung <span class="derdesfsvfsr">{{prop.committeeDeterminerGenitive}}</span> neu
+    gewählten <span class="fsvfsr">{{prop.committeeNameGenitive}}</span>
+    findet während der Wahlvollversammlung direkt nach Bekanntgabe des Wahlergebnisses statt.
+  </p>
+
+  <p v-else>Die konstituierende Sitzung <span class="derdesfsvfsr">{{prop.committeeDeterminerGenitive}}</span> neu
+    gewählten <span class="fsvfsr">{{prop.committeeNameGenitive}}</span>
     findet am <span class="datum_konstituierende_sitzung">{{ prop.constituentAssemblyDate }}</span> <span
         class="uhrzeit_konstituierende_sitzung">{{ prop.constituentAssemblyTime }}</span> Uhr <span
         class="ort_konstituierende_sitzung">{{ electionProperties.constituentAssemblyLocationDE }}</span>

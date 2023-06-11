@@ -19,6 +19,7 @@ export interface ElectionProperties {
     eligibleVoters: number | null
     alwaysFsv: boolean
     fsrMembersNumberOverride: boolean
+    plenum: boolean
     seats: number | null
     mainDeadline: string | null
     countingDateTime: string | null

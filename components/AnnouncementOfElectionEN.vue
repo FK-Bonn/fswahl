@@ -19,7 +19,9 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
 
   <p><b><span class="zahl_sitze">{{ prop.seats }}</span> representatives</b> will be elected in total.</p>
 
-  <p>The election will take place <span class="wahlzeitraum_engl">
+  <p v-if="electionProperties.plenum">The election will take place as an election plenum
+    on <span class="wahlzeitraum_engl">{{ prop.firstElectionDay }}</span>.</p>
+  <p v-else>The election will take place <span class="wahlzeitraum_engl">
     from {{ prop.firstElectionDay }} to {{ prop.lastElectionDay }}</span></p>
 
   <h3>Polling Stations</h3>
@@ -58,6 +60,21 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
   <p>For further informations on the requirements please refer to §14 FSWO (cf.
     http://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#§14)</p>
 
+
+  <p v-if="electionProperties.plenum">It is also possible to declare your candidacy during the election plenum.</p>
+
+  <template v-if="electionProperties.plenum">
+    <h3>Points of order of the election plenum</h3>
+
+    <ol>
+      <li>Opening</li>
+      <li>Declaration of further candidacies</li>
+      <li>Presentation of candidates</li>
+      <li>Election</li>
+      <li>Counting and announcement of election result</li>
+      <li>Constituent assembly of the {{prop.committeeName}}</li>
+    </ol>
+  </template>
 
   <h3>Voting system</h3>
 
@@ -128,14 +145,22 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
 
   <h3>Counting</h3>
 
-  <p>The public counting will take place on the <span class="datum_auszaehlung">{{ prop.countingDate }}</span> at <span
+  <p v-if="electionProperties.plenum">
+    The public counting will take place during the electoral plenum, after the voting.
+  </p>
+
+  <p v-else>The public counting will take place on the <span class="datum_auszaehlung">{{ prop.countingDate }}</span> at <span
       class="uhrzeit_auszaehlung">{{ prop.countingTime }}</span> <span
       class="ort_auszaehlung_engl">{{ electionProperties.countingLocationEN }}</span></p>
 
 
   <h3>Constituent assembly</h3>
 
-  <p>The constituent assembly will take place on the <span
+  <p v-if="electionProperties.plenum">
+    The constituent assembly will take place during the electoral plenum, after the announcement of the result.
+  </p>
+
+  <p v-else>The constituent assembly will take place on the <span
       class="datum_konstituierende_sitzung">{{ prop.constituentAssemblyDate }}</span>
     <span class="uhrzeit_konstituierende_sitzung">{{ prop.constituentAssemblyTime }}</span> <span
         class="ort_konstituierende_sitzung_engl">{{ electionProperties.constituentAssemblyLocationEN }}</span>

@@ -11,6 +11,7 @@ const initialValue = () => {
         eligibleVoters: null,
         alwaysFsv: false,
         fsrMembersNumberOverride: false,
+        plenum: false,
         seats: null,
         mainDeadline: null,
         countingDateTime: null,
