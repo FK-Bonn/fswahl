@@ -203,6 +203,13 @@ export class PropertyCalculator {
         return undefined;
     }
 
+    get extraBallotLine(): boolean | undefined {
+        if (this.seats) {
+            return this.properties.candidates.length <= this.seats;
+        }
+        return undefined;
+    }
+
     get mainDeadlineDate(): string | undefined {
         if (this.properties.mainDeadline) {
             return this.date(this.properties.mainDeadline);

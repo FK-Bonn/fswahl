@@ -26,4 +26,5 @@ export interface ElectionProperties {
     supervisorEmail: string | null
     pollingPlaces: EventPlace[]
     electoralRegisterPlaces: EventPlace[]
+    candidates: string[]
 }

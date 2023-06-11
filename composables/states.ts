@@ -23,6 +23,7 @@ const initialValue = () => {
         supervisorEmail: null,
         pollingPlaces: [],
         electoralRegisterPlaces: [],
+        candidates: [],
     };
 }
 export const useElectionProperties = createGlobalState(() => {
