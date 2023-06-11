@@ -58,7 +58,7 @@ const addPollingPlace = () => {
     <label for="eligible-voters" class="col-lg-3 col-form-label">
       Anzahl der Wahlberechtigten laut Wählendenverzeichnis</label>
     <div class="col-lg-2">
-      <input type="number" class="form-control" id="eligible-voters" v-model="electionProperties.voters">
+      <input type="number" class="form-control" id="eligible-voters" v-model="electionProperties.eligibleVoters">
     </div>
   </div>
   <div class="row mb-3" v-if="calculatedElectionProperties.checkAlwaysFSV">
@@ -221,6 +221,28 @@ const addPollingPlace = () => {
     <label for="supervisor-email" class="col-lg-3 col-form-label">E-Mail-Adresse der Wahlleitung</label>
     <div class="col-lg-2">
       <input type="text" class="form-control" id="supervisor-email" v-model="electionProperties.supervisorEmail">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="result-location" class="col-lg-3 col-form-label">Ort der Veröffentlichung des Wahlergebnisses</label>
+    <div class="col-lg-2">
+      <input type="text" class="form-control" id="result-location" v-model="electionProperties.resultLocation">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="result-date" class="col-lg-3 col-form-label">Datum der Veröffentlichung des Wahlergebnisses</label>
+    <div class="col-lg-2">
+      <input type="date" class="form-control" id="result-date" v-model="electionProperties.resultDate">
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+    <label for="invalid-votes" class="col-lg-3 col-form-label">Anzahl der ungültigen Stimmen</label>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" id="invalid-votes" v-model="electionProperties.invalidVotes">
     </div>
   </div>
 

@@ -6,12 +6,17 @@ export interface EventPlace {
     locationEN: string
 }
 
+export interface IndividualResult {
+    name: string
+    votes: number
+}
+
 export interface ElectionProperties {
     stateVersion: number
     fsName: string
     dateStart: string | null
     dateEnd: string | null
-    voters: number | null
+    eligibleVoters: number | null
     alwaysFsv: boolean
     fsrMembersNumberOverride: boolean
     seats: number | null
@@ -27,4 +32,8 @@ export interface ElectionProperties {
     pollingPlaces: EventPlace[]
     electoralRegisterPlaces: EventPlace[]
     candidates: string[]
+    resultLocation: string | null
+    resultDate: string | null
+    invalidVotes: number | null
+    votes: IndividualResult[]
 }

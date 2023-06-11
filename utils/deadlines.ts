@@ -105,10 +105,10 @@ export class PropertyCalculator {
     }
 
     get checkAlwaysFSV(): boolean | undefined {
-        if (this.properties.voters === null) {
+        if (this.properties.eligibleVoters === null) {
             return undefined;
         } else {
-            return this.properties.voters <= 500;
+            return this.properties.eligibleVoters <= 500;
         }
     }
 
@@ -127,10 +127,10 @@ export class PropertyCalculator {
         if (this.properties.alwaysFsv) {
             return true;
         }
-        if (this.properties.voters === null) {
+        if (this.properties.eligibleVoters === null) {
             return undefined;
         } else {
-            return this.properties.voters > 500;
+            return this.properties.eligibleVoters > 500;
         }
     }
 
@@ -187,14 +187,14 @@ export class PropertyCalculator {
             return 5;
         }
         if (this.electFSV) {
-            if (this.properties.voters) {
-                if (this.properties.voters > 2000) {
+            if (this.properties.eligibleVoters) {
+                if (this.properties.eligibleVoters > 2000) {
                     return 19;
                 }
-                if (this.properties.voters > 1000) {
+                if (this.properties.eligibleVoters > 1000) {
                     return 15;
                 }
-                if (this.properties.voters > 500) {
+                if (this.properties.eligibleVoters > 500) {
                     return 11;
                 }
                 return 7;
@@ -249,6 +249,36 @@ export class PropertyCalculator {
     get constituentAssemblyTime(): string | undefined {
         if (this.properties.constituentAssemblyDateTime) {
             return this.time(this.properties.constituentAssemblyDateTime);
+        }
+        return undefined;
+    }
+
+    get resultDate(): string | null {
+        if (this.properties.resultDate) {
+            return this.date(this.properties.resultDate);
+        }
+        return null;
+    }
+
+    get validVotes(): number {
+        let sum = 0;
+        for (let vote of this.properties.votes) {
+            sum += vote.votes;
+        }
+        return sum;
+    }
+
+    get totalVotes(): number | undefined {
+        if (this.properties.invalidVotes) {
+            return this.properties.invalidVotes + this.validVotes;
+        }
+        return undefined;
+    }
+
+    get turnout(): string | undefined {
+        if (this.totalVotes && this.properties.eligibleVoters) {
+            const turnoutValue = this.totalVotes / this.properties.eligibleVoters * 100;
+            return turnoutValue.toFixed(2).replace('.', ',') + ' %';
         }
         return undefined;
     }

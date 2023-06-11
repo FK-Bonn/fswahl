@@ -8,7 +8,7 @@ const initialValue = () => {
         fsName: '',
         dateStart: null,
         dateEnd: null,
-        voters: null,
+        eligibleVoters: null,
         alwaysFsv: false,
         fsrMembersNumberOverride: false,
         seats: null,
@@ -24,6 +24,10 @@ const initialValue = () => {
         pollingPlaces: [],
         electoralRegisterPlaces: [],
         candidates: [],
+        resultLocation: null,
+        resultDate: null,
+        invalidVotes: null,
+        votes: [],
     };
 }
 export const useElectionProperties = createGlobalState(() => {
