@@ -1,7 +1,7 @@
 import {ElectionProperties} from "~/utils/interfaces";
 
 export class PropertyCalculator {
-    private properties: ElectionProperties
+    public readonly properties: ElectionProperties
 
     constructor(properties: ElectionProperties) {
         this.properties = properties;

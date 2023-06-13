@@ -3,6 +3,7 @@ import {useElectionProperties} from "~/composables/states";
 import CountingOptions from "~/components/options/CountingOptions.vue";
 import ConstituentAssemblyOptions from "~/components/options/ConstituentAssemblyOptions.vue";
 import ElectionSupervisorOptions from "~/components/options/ElectionSupervisorOptions.vue";
+import ValidationErrors from "~/components/alerts/ValidationErrors.vue";
 
 const electionProperties = useElectionProperties();
 const calculatedElectionProperties = computed(() => new PropertyCalculator(electionProperties.value))
@@ -28,6 +29,9 @@ const addPollingPlace = () => {
 </script>
 
 <template>
+
+  <ValidationErrors/>
+
   <h1>Konfiguration</h1>
 
   <ResetButton/>
