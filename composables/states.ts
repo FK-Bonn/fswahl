@@ -2,7 +2,7 @@ import {ElectionProperties} from "~/utils/interfaces";
 import {createGlobalState, useLocalStorage} from "@vueuse/core";
 
 
-const initialValue = () => {
+export const initialValue = () => {
     return {
         stateVersion: 0,
         fsName: '',

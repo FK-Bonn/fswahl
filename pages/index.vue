@@ -30,6 +30,8 @@ const addPollingPlace = () => {
 <template>
   <h1>Konfiguration</h1>
 
+  <ResetButton/>
+
   <div class="row mb-3">
     <label for="fs-name" class="col-lg-3 col-form-label">Name der Fachschaft</label>
     <div class="col-lg-9">

@@ -5,7 +5,7 @@ const printPage = () => {
 </script>
 
 <template>
-  <div class="d-print-none">
+  <div class="d-print-none mb-2">
     <button class="btn btn-primary" @click="printPage">Drucken</button>
   </div>
 </template>
