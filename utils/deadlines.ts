@@ -277,7 +277,7 @@ export class PropertyCalculator {
     }
 
     get totalVotes(): number | undefined {
-        if (this.properties.invalidVotes) {
+        if (this.properties.invalidVotes || this.properties.invalidVotes === 0) {
             return this.properties.invalidVotes + this.validVotes;
         }
         return undefined;

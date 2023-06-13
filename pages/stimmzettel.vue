@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import InfoAlert from "~/components/options/InfoAlert.vue";
+import BallotMissingValuesWarning from "~/components/alerts/BallotMissingValuesWarning.vue";
 
 const electionProperties = useElectionProperties();
 const propDE = computed(() => new PropertyCalculator(electionProperties.value))
@@ -14,6 +15,8 @@ const addCandidate = () => {
   <PrintButton/>
   <div class="d-print-none mb-4">
     <h1>Stimmzettel</h1>
+
+    <BallotMissingValuesWarning/>
 
     <template v-if="electionProperties.plenum">
       <InfoAlert class="mt-3">

@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import PrintButton from "~/components/PrintButton.vue";
+import AnnouncementMissingValuesWarning from "~/components/alerts/AnnouncementMissingValuesWarning.vue";
 
 </script>
 
 <template>
 
   <PrintButton/>
+
+  <AnnouncementMissingValuesWarning/>
 
   <div id="announcement-de">
     <AnnouncementOfElectionDE/>
