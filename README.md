@@ -12,6 +12,15 @@ Generator für Fachschaftswahlen an der Rheinischen Friedrich-Wilhelms-Universit
 - Option der Verhältniswahl nach § 28 FSWO
 
 
+## Update der nicht zulässigen Daten und Zeiträume
+
+In `/utils/forbidden-dates.ts` sind Daten und Zeiträume definiert, in denen keine Wahltage und keine gemeinsamen Fristen zur Einreichung von Kandidaturen, zur Einreichung von Briefwahlanträgen, und zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis liegen dürfen.
+Diese müssen regelmäßig anhand der [Semestertermine](https://www.uni-bonn.de/de/studium/organisation-des-studiums/semestertermine) und eines [Feiertagskalenders](https://www.schulferien.org/deutschland/feiertage/nordrhein-westfalen/) aktualisiert werden.
+
+Die Datenstruktur sollte selbsterklärend sein.
+Einzeltage haben dasselbe Datum in `start` und `end`.
+
+
 ## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

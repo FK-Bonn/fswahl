@@ -1,5 +1,6 @@
 import {ElectionProperties} from "~/utils/interfaces";
 import {PropertyCalculator} from "~/utils/deadlines";
+import {FORBIDDEN_DATES} from "~/utils/forbidden-dates";
 
 const getDateRange = (start: Date, end: Date) => {
     const days = [];
@@ -9,6 +10,17 @@ const getDateRange = (start: Date, end: Date) => {
         current.setDate(current.getDate() + 1);
     }
     return days;
+}
+
+const getDateRangeString = (start: string, end: string) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const range = getDateRange(startDate, endDate);
+    const rangeString = [];
+    for (let day of range) {
+        rangeString.push(day.toISOString().substring(0, 10));
+    }
+    return rangeString;
 }
 
 // Last day comes after first day
@@ -182,4 +194,46 @@ export const checkConstitutiveAssemblyDate = (prop: ElectionProperties, calc: Pr
         return 5 <= diff && diff <= 14;
     }
     return true;
+}
+
+const getForbiddenDateTitle = (date: string) => {
+    for (let forbiddendate of FORBIDDEN_DATES) {
+        if (forbiddendate.start <= date && forbiddendate.end >= date) {
+            return forbiddendate.title;
+        }
+    }
+    return null;
+}
+export const checkForbiddenDates = (prop: ElectionProperties) => {
+    const messages = [];
+    // check if election days overlap with forbidden days
+    if (prop.plenum) {
+        if (prop.dateStart) {
+            const title = getForbiddenDateTitle(prop.dateStart);
+            if (title) {
+                messages.push(`${prop.dateStart} kann kein Wahltag sein: ${title}`);
+            }
+        }
+    } else {
+        if (prop.dateStart && prop.dateEnd) {
+            const range = getDateRangeString(prop.dateStart, prop.dateEnd);
+            for (let day of range) {
+                const title = getForbiddenDateTitle(day);
+                if (title) {
+                    messages.push(`${day} kann kein Wahltag sein: ${title}`);
+                }
+            }
+        }
+    }
+
+    // check if main deadline is a forbidden day
+    if (prop.mainDeadline) {
+        const title = getForbiddenDateTitle(prop.mainDeadline);
+        if (title) {
+            messages.push(`Die gemeinsame Frist zur Einreichung von Kandidaturen, zur Einreichung von Briefwahlanträgen,
+             und zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis kann nicht auf den ${prop.mainDeadline}
+              gelegt werden: ${title}`);
+        }
+    }
+    return messages;
 }

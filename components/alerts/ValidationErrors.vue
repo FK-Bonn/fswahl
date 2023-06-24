@@ -7,9 +7,12 @@ import {
   checkElectoralRegisterDatesAreWorkdays,
   checkElectoralRegisterDatesBeforeMainDeadline,
   checkFirstDayIsMonTueWed,
+  checkForbiddenDates,
   checkLastDayIsWedThuFri,
   checkLastElectionDayAfterFirstElectionDay,
-  checkMainDeadline, checkPollingStationExistsForEachDay, checkPollingStationsOnElectionDays,
+  checkMainDeadline,
+  checkPollingStationExistsForEachDay,
+  checkPollingStationsOnElectionDays,
   checkThreeToFiveDays
 } from "~/utils/validation";
 
@@ -42,18 +45,20 @@ const collectErrors = () => {
   if(!checkElectoralRegisterDatesBeforeMainDeadline(electionProperties.value)){
     errors.push('Das Wählendenverzeichnis muss vor der gemeinsamen Frist zur Einreichung von Kandidaturen, zur Einreichung von Briefwahlanträgen, und zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis ausliegen')
   }
-  if(!checkPollingStationExistsForEachDay(electionProperties.value)){
+  if (!checkPollingStationExistsForEachDay(electionProperties.value)) {
     errors.push('An jedem Wahltag muss ein Wahllokal geöffnet sein')
   }
-  if(!checkPollingStationsOnElectionDays(electionProperties.value, prop.value)){
+  if (!checkPollingStationsOnElectionDays(electionProperties.value, prop.value)) {
     errors.push('Die Wahllokale können nicht außerhalb der Wahltage geöffnet sein')
   }
-  if(!checkCountingAfterElectionEnd(electionProperties.value, prop.value)){
+  if (!checkCountingAfterElectionEnd(electionProperties.value, prop.value)) {
     errors.push('Die Auszählung kann frühestens am letzten Wahltag stattfinden')
   }
-  if(!checkConstitutiveAssemblyDate(electionProperties.value, prop.value)){
+  if (!checkConstitutiveAssemblyDate(electionProperties.value, prop.value)) {
     errors.push('Die konstituierende Sitzung muss zwischen dem 5. und dem 14. Tag nach dem letzten Wahltag liegen (einschließlich)')
   }
+  const forbiddenDatesErrors = checkForbiddenDates(electionProperties.value);
+  errors.push(...forbiddenDatesErrors);
   return errors;
 }
 

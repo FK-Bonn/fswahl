@@ -11,6 +11,12 @@ export interface IndividualResult {
     votes: number
 }
 
+export interface ForbiddenDate {
+    title: string
+    start: string
+    end: string
+}
+
 export interface ElectionProperties {
     stateVersion: number
     fsName: string
