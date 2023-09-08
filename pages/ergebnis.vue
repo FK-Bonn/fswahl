@@ -172,7 +172,7 @@ const addIndividualVote = () => {
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <p> Die ersten <span class="zahl_sitze">{{ propDE.seats }}</span> Peronen mit den meisten Stimmen, die
+        <p> Die ersten <span class="zahl_sitze">{{ propDE.seats }}</span> Personen mit den meisten Stimmen, die
           mindestens 1 Stimme
           erhalten haben, sind gewählt.</p>
         <p> Bei Stimmengleichheit wurde die Reihenfolge gelost.</p>
