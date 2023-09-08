@@ -61,6 +61,11 @@ const calculatedElectionProperties = computed(() => new PropertyCalculator(elect
       <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A715">§ 15 Abs. 1</a></td>
     </tr>
     <tr>
+      <td class="wb">Auslage des Wählendenverzeichnisses (mindestens 3 Tage)</td>
+      <td><i>↓ vor dieser Frist</i></td>
+      <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A714">§ 14 Abs. 3</a></td>
+    </tr>
+    <tr>
       <td class="wb">
         <ul class="list-unstyled">
           <li>Gemeinsame Frist zur Einreichung von Kandidaturen,</li>
@@ -76,9 +81,16 @@ const calculatedElectionProperties = computed(() => new PropertyCalculator(elect
       <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A713">§ 13 Abs. 5</a></td>
     </tr>
     <tr>
-      <td class="wb">Auslage des Wählendenverzeichnisses (mindestens 3 Tage)</td>
-      <td><i>↑ vor dieser Frist</i></td>
-      <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A714">§ 14 Abs. 3</a></td>
+      <td class="wb">Wahlauschusssitzung zur
+        <ul class="list-unstyled">
+          <li>Zulassung der mängelfreien Kandidaturen zur Wahl,</li>
+          <li>ggf. Feststellung von Mängeln in eingereichten Kandidaturen und Setzen einer angemessenen Nachfrist,</li>
+          <li>ggf. Entscheidung über Anträge auf Briefwahl,</li>
+          <li>ggf. Entscheidung über Einsprüche gegen das Wählendenverzeichnis.</li>
+        </ul>
+      </td>
+      <td><i>↑ unmittelbar nach Ablauf dieser Frist</i></td>
+      <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A713">§ 13 Abs. 7</a></td>
     </tr>
 
     <tr>
