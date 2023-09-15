@@ -11,7 +11,7 @@ const collectErrors = () => {
   if (!electionProperties.value.dateStart) {
     errors.push('Der erste Wahltag')
   }
-  if (!electionProperties.value.dateEnd || !electionProperties.value.plenum) {
+  if (!electionProperties.value.dateEnd && !electionProperties.value.plenum) {
     errors.push('Der letzte Wahltag')
   }
   if (!electionProperties.value.eligibleVoters) {

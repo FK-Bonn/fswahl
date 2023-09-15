@@ -11,16 +11,16 @@ const collectErrors = () => {
   if (!electionProperties.value.dateStart) {
     errors.push('Der erste Wahltag')
   }
-  if (!electionProperties.value.dateEnd || !electionProperties.value.plenum) {
+  if (!electionProperties.value.dateEnd && !electionProperties.value.plenum) {
     errors.push('Der letzte Wahltag')
   }
   if (!electionProperties.value.eligibleVoters) {
     errors.push('Die Anzahl der Wahlberechtigten')
   }
-  if (!electionProperties.value.pollingPlaces.length < 3) {
+  if (electionProperties.value.pollingPlaces.length < 3) {
     errors.push('Urnenöffnungszeiten für alle Wahltage')
   }
-  if (!electionProperties.value.electoralRegisterPlaces.length < 3) {
+  if (electionProperties.value.electoralRegisterPlaces.length < 3) {
     errors.push('Die Auslage des Wählendenverzeichnisses (mind. 3 Tage)')
   }
   if (!electionProperties.value.mainDeadline) {
