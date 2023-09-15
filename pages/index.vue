@@ -39,10 +39,10 @@ const addPollingPlace = () => {
   <div class="row mb-3">
     <label for="fs-name" class="col-lg-3 col-form-label">Name der Fachschaft</label>
     <div class="col-lg-9">
-    <div class="input-group">
-      <span class="input-group-text" id="fs-addon">Fachschaft</span>
-      <input type="text" class="form-control" id="fs-name" v-model="electionProperties.fsName">
-    </div>
+      <div class="input-group">
+        <span class="input-group-text" id="fs-addon">Fachschaft</span>
+        <input type="text" class="form-control" id="fs-name" v-model="electionProperties.fsName">
+      </div>
     </div>
   </div>
   <div class="row mb-3">
@@ -135,6 +135,12 @@ const addPollingPlace = () => {
       zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis</label>
     <div class="col-lg-2">
       <input type="datetime-local" class="form-control" id="main-deadline" v-model="electionProperties.mainDeadline">
+      <div id="main-deadline-help" class="form-text">
+        Zwischen
+        <span id="wvs">{{ calculatedElectionProperties.mainDeadlineEarliest || '…' }}</span><br>
+        und
+        <span id="wve">{{ calculatedElectionProperties.mainDeadlineLatest || '…' }}</span>
+      </div>
     </div>
     <div class="col-lg-2 text-success">
       {{ calculatedElectionProperties.mainDeadlineWeekday }}
@@ -142,6 +148,12 @@ const addPollingPlace = () => {
   </div>
 
   <p>Auslegung des Wählendenverzeichnisses</p>
+
+  <p class="text-muted">
+    Mindestens drei Tage vor der gemeinsamen Frist zur Einreichung von Kandidaturen,
+    zur Einreichung von Briefwahlanträgen, und
+    zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis.
+  </p>
 
   <table id="wvz_table" class="table table-striped table-hover">
     <tbody>
@@ -166,6 +178,11 @@ const addPollingPlace = () => {
   </table>
 
   <p>Wahllokale</p>
+
+  <p class="text-muted">
+    Mindestens eins an jedem Wahltag
+  </p>
+
 
   <table id="pollingplaces_table" class="table table-striped table-hover">
     <tbody>
@@ -194,7 +211,6 @@ const addPollingPlace = () => {
   <ConstituentAssemblyOptions/>
 
   <ElectionSupervisorOptions/>
-
 
 
 </template>

@@ -17,7 +17,13 @@ export class PropertyCalculator {
     }
 
     private afterElection(numberOfDays: number): string {
-        if (this.properties.dateEnd) {
+        if (this.properties.plenum) {
+            if (this.properties.dateStart) {
+                const date = new Date(this.properties.dateStart);
+                date.setDate(date.getDate() + numberOfDays)
+                return this.date(date);
+            }
+        } else if (this.properties.dateEnd) {
             const date = new Date(this.properties.dateEnd);
             date.setDate(date.getDate() + numberOfDays)
             return this.date(date);

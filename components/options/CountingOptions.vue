@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const electionProperties = useElectionProperties();
+const calculatedElectionProperties = computed(() => new PropertyCalculator(electionProperties.value))
 </script>
 
 <template>
@@ -9,6 +10,9 @@ const electionProperties = useElectionProperties();
     <div class="col-lg-2">
       <input type="datetime-local" class="form-control" id="counting-datetime"
              v-model="electionProperties.countingDateTime">
+      <div id="main-deadline-help" class="form-text">
+        Üblicherweise direkt am {{calculatedElectionProperties.lastElectionDay || '…'}} nach Ende der Wahl
+      </div>
     </div>
   </div>
 

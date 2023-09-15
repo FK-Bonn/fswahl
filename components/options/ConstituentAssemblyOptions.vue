@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const electionProperties = useElectionProperties();
+const calculatedElectionProperties = computed(() => new PropertyCalculator(electionProperties.value))
 </script>
 
 <template>
@@ -10,6 +11,12 @@ const electionProperties = useElectionProperties();
     <div class="col-lg-2">
       <input type="datetime-local" class="form-control" id="constituent-assembly-datetime"
              v-model="electionProperties.constituentAssemblyDateTime">
+      <div id="main-deadline-help" class="form-text">
+        Zwischen
+        <span id="konstfsvs">{{ calculatedElectionProperties.initialMeetingEarliest || '…' }}</span><br>
+        und
+        <span id="konstfsve">{{ calculatedElectionProperties.initialMeetingLatest || '…' }}</span>
+      </div>
     </div>
   </div>
 
