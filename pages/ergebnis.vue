@@ -187,16 +187,14 @@ const addIndividualVote = () => {
     <div class="row">
       <div class="col-sm-6">
         <h3>Einspruch gegen das Wahlergebnis</h3>
-        <p>Gegen dieses Wahlergebnis kann innerhalb von 14 Tagen nach seiner Veröffentlichung am <span
-            class="datum_wahlergebnis">{{ propDE.resultDate }}</span> beim Wahlprüfungsausschuss der
-          Fachschaftenkonferenz
+        <p>Gegen dieses Wahlergebnis kann innerhalb von 14 Tagen nach seiner Veröffentlichung auf der 
+          Bekanntmachungsplattform der Studierendenschaft beim Wahlprüfungsausschuss der Fachschaftenkonferenz
           schriftlich oder per E-Mail an fsen@asta.uni-bonn.de (c/o Fachschaftenreferat) Einspruch erhoben werden.</p>
       </div>
       <div class="col-sm-6">
         <h3>Objection against the election result</h3>
-        <p> An objection against the election result can be raised until 14 days after its publication on <span
-            class="datum_wahlergebnis">{{ propEN.resultDate }}</span>. Objections must be submitted to the
-          Wahlprüfungsausschuss of
+        <p> An objection against the election result can be raised until 14 days after its publication in the student body's
+          public notices. Objections must be submitted to the Wahlprüfungsausschuss of
           the Fachschaftenkonferenz in writing or by email to fsen@asta.uni-bonn.de (c/o Fachschaftenreferat). </p>
       </div>
     </div>
