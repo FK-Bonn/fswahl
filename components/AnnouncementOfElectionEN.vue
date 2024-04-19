@@ -99,7 +99,6 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
     at the university of Bonn by <b><span class="frist_wahlberechtigung">{{ prop.eligibilityDeadline }}</span></b> is
     eligible to vote and to be elected.
     If you are a member of multiple student bodies, you are only eligible to vote for a single one.
-    The corresponding subject is marked on the back of your student ID with a star (*).
     Visiting students are not eligible to vote.</p>
 
   <p>Everyone who is listed in the electoral register is eligible to vote.</p>
