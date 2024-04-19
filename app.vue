@@ -35,6 +35,11 @@
             </NuxtLink>
           </li>
         </ul>
+        <div class="d-flex me-1">
+          <a href="https://github.com/FK-Bonn/fswahl" title="Open Project on GitHub">
+            <img style="height: 2em;" src="/github-mark.svg" alt="GitHub logo"/>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
