@@ -197,6 +197,7 @@ export const checkConstitutiveAssemblyDate = (prop: ElectionProperties, calc: Pr
 }
 
 const getForbiddenDateTitle = (date: string) => {
+    date = date.substring(0, 10);
     for (let forbiddendate of FORBIDDEN_DATES) {
         if (forbiddendate.start <= date && forbiddendate.end >= date) {
             return forbiddendate.title;
