@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import {useElectionProperties} from "~/composables/states";
+import {downloadText, importData} from "~/utils/file";
+
+const electionProperties = useElectionProperties();
+const loadCallback = (text: string) => {
+  try {
+    electionProperties.value = JSON.parse(text);
+  } catch (e: any) {
+    alert('Fehler: Daten konnten nicht geladen werden:\n' + e.toString());
+  }
+}
+const load = () => {
+  importData(loadCallback);
+};
+const save = () => {
+  const value = JSON.stringify(electionProperties.value, null, 2);
+  let fsName = electionProperties.value.fsName.replaceAll(' ', '-') || 'fachschaft';
+  downloadText(fsName, value);
+};
+</script>
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -35,6 +56,10 @@
             </NuxtLink>
           </li>
         </ul>
+        <div class="btn-group me-3" role="group" aria-label="Laden/Speichern">
+          <button type="button" class="btn btn-outline-primary" @click="load">Laden</button>
+          <button type="button" class="btn btn-outline-primary" @click="save">Speichern</button>
+        </div>
         <div class="d-flex me-1">
           <a href="https://github.com/FK-Bonn/fswahl" title="Open Project on GitHub">
             <img style="height: 2em;" src="/github-mark.svg" alt="GitHub logo"/>
@@ -47,5 +72,3 @@
     <NuxtPage/>
   </div>
 </template>
-<script setup lang="ts">
-</script>
