@@ -60,8 +60,9 @@ const addCandidate = () => {
       <template v-if="!electionProperties.plenum" v-for="(person, index) in electionProperties.candidates">
         <li class="list-group-item">{{ person }}</li>
       </template>
-      <li class="list-group-item" v-if="propDE.extraBallotLine"><span class="extra-ballot-line"></span></li>
-      <li class="list-group-item" v-else><span class="extra-ballot-line"></span></li>
+      <li class="list-group-item" v-if="propDE.extraBallotLine || electionProperties.plenum">
+        <span class="extra-ballot-line"></span>
+      </li>
     </ul>
     <div class="card-footer" v-if="propDE.extraBallotLine || electionProperties.plenum">
       In das Freifeld darfst du eine Person aus dem Wählendenverzeichnis eintragen und
@@ -99,5 +100,6 @@ li.list-group-item {
   width: 80%;
   vertical-align: bottom;
   border-bottom: 2px solid black;
+  padding-top: 4rem;
 }
 </style>
