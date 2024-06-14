@@ -25,7 +25,7 @@ export const initialValue = () => {
         pollingPlaces: [],
         electoralRegisterPlaces: [],
         candidates: [],
-        resultLocation: null,
+        resultLocation: 'Bonn',
         resultDate: null,
         invalidVotes: null,
         votes: [],
