@@ -1,6 +1,6 @@
 export const downloadText = (fsName: string, text: string) => {
     const hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:attachment/text,' + encodeURI(text);
+    hiddenElement.href = 'data:attachment/text,' + encodeURIComponent(text);
     hiddenElement.target = '_blank';
     hiddenElement.download = fsName + '.fswahl';
     hiddenElement.click();
