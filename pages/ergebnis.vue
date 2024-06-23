@@ -4,7 +4,8 @@ import ResultMissingValuesWarning from "~/components/alerts/ResultMissingValuesW
 const electionProperties = useElectionProperties();
 const propDE = computed(() => new PropertyCalculator(electionProperties.value))
 const propEN = computed(() => new PropertyCalculatorEN(electionProperties.value))
-
+const hasNonElected = computed(()=>electionProperties.value.votes.length > (propDE.value.seats || 0)
+    || electionProperties.value.votes.some(vote => vote.votes < 1))
 
 const addIndividualVote = () => {
   electionProperties.value.votes.push({
@@ -129,54 +130,82 @@ const addIndividualVote = () => {
       <table class="table">
         <tbody>
         <tr>
-          <th> Wahlberechtigte</th>
+          <th>Wahlberechtigte</th>
           <td><span class="anzwahlberechtigte">{{ electionProperties.eligibleVoters }}</span></td>
-          <th> Eligible voters</th>
+          <th>Eligible voters</th>
         </tr>
         <tr>
-          <th> Abgegebene Stimmen</th>
+          <th>Abgegebene Stimmen</th>
           <td><span class="abgegebene_stimmen">{{ propDE.totalVotes }}</span></td>
-          <th> Cast votes</th>
+          <th>Cast votes</th>
         </tr>
         <tr>
-          <th> Wahlbeteiligung</th>
+          <th>Wahlbeteiligung</th>
           <td><span class="wahlbeteiligung">{{ propDE.turnout }}</span></td>
-          <th> Voter turnout</th>
+          <th>Voter turnout</th>
         </tr>
         <tr>
-          <th> Abgegebene ungültige Stimmen</th>
+          <th>Abgegebene ungültige Stimmen</th>
           <td><span class="ungueltige_stimmen">{{ electionProperties.invalidVotes }}</span></td>
-          <th> Invalid votes</th>
+          <th>Invalid votes</th>
         </tr>
         <tr>
-          <th> Abgegebene gültige Stimmen</th>
+          <th>Enthaltungen</th>
+          <td><span class="enthaltungen">{{ electionProperties.abstentions }}</span></td>
+          <th>Abstentions</th>
+        </tr>
+        <tr>
+          <th>Abgegebene gültige Stimmen</th>
           <td><span class="gueltige_stimmen">{{ propDE.validVotes }}</span></td>
-          <th> Valid votes</th>
+          <th>Valid votes</th>
         </tr>
         </tbody>
       </table>
     </div>
+    <h5>Gewählt / Elected</h5>
     <div class="row">
       <table class="table">
         <thead>
         <tr>
           <th scope="col">Postition/Rank</th>
-          <th scope="col">Name/name</th>
-          <th scope="col">Stimmen/votes</th>
+          <th scope="col">Name/Name</th>
+          <th scope="col">Stimmen/Votes</th>
         </tr>
         </thead>
         <tbody id="teilergebnisse_table">
         <template v-for="(person, index) in electionProperties.votes">
-          <tr>
+          <tr v-if="(index < (propDE.seats || 0)) && person.votes > 0">
             <td>{{ index + 1 }}</td>
             <td>{{ person.name }}</td>
             <td>{{ person.votes }}</td>
           </tr>
         </template>
-
         </tbody>
       </table>
     </div>
+    <template v-if="hasNonElected">
+      <h5>Nicht gewählt / Not elected</h5>
+      <div class="row">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Postition/Rank</th>
+            <th scope="col">Name/Name</th>
+            <th scope="col">Stimmen/Votes</th>
+          </tr>
+          </thead>
+          <tbody id="teilergebnisse_table">
+          <template v-for="(person, index) in electionProperties.votes">
+            <tr v-if="index >= (propDE.seats || 0) || person.votes < 1">
+              <td>{{ index + 1 }}</td>
+              <td>{{ person.name }}</td>
+              <td>{{ person.votes }}</td>
+            </tr>
+          </template>
+          </tbody>
+        </table>
+      </div>
+    </template>
     <div class="row">
       <div class="col-sm-6">
         <p> Die ersten <span class="zahl_sitze">{{ propDE.seats }}</span> Personen mit den meisten Stimmen, die
@@ -271,7 +300,7 @@ const addIndividualVote = () => {
 </template>
 
 <style scoped>
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   text-align: center;
 }
 @media print {
