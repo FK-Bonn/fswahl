@@ -1,3 +1,5 @@
+import {ElectionProperties, StoredElectionProperties} from "~/utils/interfaces";
+
 export const downloadText = (fsName: string, text: string) => {
     const hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURIComponent(text);
@@ -21,4 +23,11 @@ export const importData = (callback: (text: string) => void) => {
     };
     input.click();
 
+}
+
+export const upgradeElectionPropertiesToLatestVersion = (parsedValue: StoredElectionProperties) => {
+    if (parsedValue.stateVersion < 1) {
+        const value = parsedValue as ElectionProperties;
+        value.abstentions = null;
+    }
 }

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import {useElectionProperties} from "~/composables/states";
-import {downloadText, importData} from "~/utils/file";
+import {downloadText, importData, upgradeElectionPropertiesToLatestVersion} from "~/utils/file";
 
 const electionProperties = useElectionProperties();
 const loadCallback = (text: string) => {
   try {
-    electionProperties.value = JSON.parse(text);
+    const parsedValue = JSON.parse(text);
+    upgradeElectionPropertiesToLatestVersion(parsedValue);
+    electionProperties.value = parsedValue;
   } catch (e: any) {
     alert('Fehler: Daten konnten nicht geladen werden:\n' + e.toString());
   }

@@ -17,7 +17,7 @@ export interface ForbiddenDate {
     end: string
 }
 
-export interface ElectionProperties {
+export interface LegacyElectionProperties0 {
     stateVersion: number
     fsName: string
     dateStart: string | null
@@ -44,3 +44,10 @@ export interface ElectionProperties {
     invalidVotes: number | null
     votes: IndividualResult[]
 }
+
+export interface ElectionProperties extends LegacyElectionProperties0 {
+    abstentions: number | null
+}
+
+export type StoredElectionProperties = LegacyElectionProperties0
+    | ElectionProperties

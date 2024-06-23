@@ -58,6 +58,13 @@ const addIndividualVote = () => {
     </div>
 
     <div class="row mb-3">
+      <label for="invalid-votes" class="col-lg-3 col-form-label">Anzahl der Enthaltungen</label>
+      <div class="col-lg-2">
+        <input type="number" class="form-control" id="invalid-votes" v-model="electionProperties.abstentions">
+      </div>
+    </div>
+
+    <div class="row mb-3">
       <label for="result-location" class="col-lg-3 col-form-label">Ort der Veröffentlichung des Wahlergebnisses</label>
       <div class="col-lg-2">
         <input type="text" class="form-control" id="result-location" v-model="electionProperties.resultLocation">

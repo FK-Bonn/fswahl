@@ -4,7 +4,7 @@ import {createGlobalState, useLocalStorage} from "@vueuse/core";
 
 export const initialValue = () => {
     return {
-        stateVersion: 0,
+        stateVersion: 1,
         fsName: '',
         dateStart: null,
         dateEnd: null,
@@ -28,6 +28,7 @@ export const initialValue = () => {
         resultLocation: 'Bonn',
         resultDate: null,
         invalidVotes: null,
+        abstentions: null,
         votes: [],
     };
 }
