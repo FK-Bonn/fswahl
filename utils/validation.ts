@@ -196,6 +196,21 @@ export const checkConstitutiveAssemblyDate = (prop: ElectionProperties, calc: Pr
     return true;
 }
 
+// The candidates are ordered by votes in descending order
+export const checkCandidatesAreOrderedByVotes = (prop: ElectionProperties, calc: PropertyCalculator) => {
+    if (prop.votes.length <= 0) {
+        return true;
+    }
+    let previous = prop.votes[0].votes;
+    for (let vote of prop.votes) {
+        if (vote.votes > previous) {
+            return false;
+        }
+        previous = vote.votes;
+    }
+    return true;
+}
+
 const getForbiddenDateTitle = (date: string) => {
     date = date.substring(0, 10);
     for (let forbiddendate of FORBIDDEN_DATES) {

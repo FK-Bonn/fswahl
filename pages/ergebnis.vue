@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ResultMissingValuesWarning from "~/components/alerts/ResultMissingValuesWarning.vue";
+import ResultErrors from "~/components/alerts/ResultErrors.vue";
 
 const electionProperties = useElectionProperties();
 const propDE = computed(() => new PropertyCalculator(electionProperties.value))
@@ -20,6 +21,7 @@ const addIndividualVote = () => {
   <PrintButton/>
 
   <ResultMissingValuesWarning/>
+  <ResultErrors/>
 
   <div class="d-print-none">
     <h1>Ergebnis</h1>
