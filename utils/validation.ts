@@ -74,7 +74,9 @@ export const checkLastDayIsWedThuFri = (prop: ElectionProperties, calc: Property
 export const checkMainDeadline = (prop: ElectionProperties) => {
     if (prop.dateStart && prop.mainDeadline) {
         const first = new Date(prop.dateStart);
+        first.setHours(0, 0, 0, 0);
         const mainDeadline = new Date(prop.mainDeadline);
+        mainDeadline.setHours(0, 0, 0, 0);
         const diff = (first - mainDeadline) / (1000 * 60 * 60 * 24);
         return 10 <= diff && diff <= 13;
     }
