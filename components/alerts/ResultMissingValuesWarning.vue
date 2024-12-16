@@ -20,6 +20,9 @@ const collectErrors = () => {
   if (!electionProperties.value.invalidVotes && electionProperties.value.invalidVotes !== 0) {
     errors.push('Die Anzahl der ungültigen Stimmen')
   }
+  if (!electionProperties.value.abstentions && electionProperties.value.abstentions !== 0) {
+    errors.push('Die Anzahl der Enthaltungen')
+  }
   if (!electionProperties.value.resultLocation) {
     errors.push('Der Ort der Veröffentlichung des Wahlergebnisses')
   }

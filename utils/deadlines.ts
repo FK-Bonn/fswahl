@@ -274,8 +274,11 @@ export class PropertyCalculator {
         return null;
     }
 
-    get validVotes(): number {
-        let sum = 0;
+    get validVotes(): number | undefined {
+        if (this.properties.abstentions === null) {
+            return undefined;
+        }
+        let sum = this.properties.abstentions;
         for (let vote of this.properties.votes) {
             sum += vote.votes;
         }
@@ -284,7 +287,9 @@ export class PropertyCalculator {
 
     get totalVotes(): number | undefined {
         if (this.properties.invalidVotes || this.properties.invalidVotes === 0) {
-            return this.properties.invalidVotes + this.validVotes;
+            if (this.validVotes || this.validVotes === 0) {
+                return this.properties.invalidVotes + this.validVotes;
+            }
         }
         return undefined;
     }
