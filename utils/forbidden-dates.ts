@@ -16,4 +16,10 @@ export const FORBIDDEN_DATES: ForbiddenDate[] = [
     {start: '2024-12-26', end: '2024-12-26', title: '2. Weihnachtsfeiertag'},
     {start: '2024-12-27', end: '2025-01-05', title: 'Weihnachtsferien'},
     {start: '2025-02-01', end: '2025-04-06', title: 'Vorlesungsfreie Zeit'},
+    {start: '2025-04-18', end: '2025-04-21', title: 'Ostern'},
+    {start: '2025-05-01', end: '2025-05-01', title: 'Tag der Arbeit'},
+    {start: '2025-05-29', end: '2025-05-29', title: 'Christi Himmelfahrt'},
+    {start: '2025-06-09', end: '2025-06-13', title: 'Pfingstferien'},
+    {start: '2025-06-19', end: '2025-06-19', title: 'Fronleichnam'},
+    {start: '2025-07-19', end: '2025-10-12', title: 'Vorlesungsfreie Zeit'},
 ]
