@@ -45,9 +45,16 @@ export interface LegacyElectionProperties0 {
     votes: IndividualResult[]
 }
 
-export interface ElectionProperties extends LegacyElectionProperties0 {
+export interface LegacyElectionProperties1 extends LegacyElectionProperties0 {
     abstentions: number | null
 }
 
+export interface ElectionProperties extends LegacyElectionProperties1 {
+    timeStartPlenum: string | null
+    locationPlenumDE: string | null
+    locationPlenumEN: string | null
+}
+
 export type StoredElectionProperties = LegacyElectionProperties0
+    | LegacyElectionProperties1
     | ElectionProperties

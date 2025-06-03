@@ -129,6 +129,26 @@ const addPollingPlace = () => {
     </div>
   </div>
 
+  <template  v-if="electionProperties.plenum">
+  <div class="row mb-3">
+    <label for="timestartplenum" class="col-lg-3 col-form-label">Start der Wahlvollversammlung (Uhrzeit)</label>
+    <div class="col-lg-2">
+      <input type="time" class="form-control" id="timestartplenum" v-model="electionProperties.timeStartPlenum">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="locationplenumDE" class="col-lg-3 col-form-label">Ort der Wahlvollversammlung (DE)</label>
+    <div class="col">
+      <input type="text" class="form-control" id="locationplenumDE" v-model="electionProperties.locationPlenumDE">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="locationplenumEN" class="col-lg-3 col-form-label">Ort der Wahlvollversammlung (EN)</label>
+    <div class="col">
+      <input type="text" class="form-control" id="locationplenumEN" v-model="electionProperties.locationPlenumEN">
+    </div>
+  </div>
+  </template>
   <div class="row mb-3">
     <label for="main-deadline" class="col-lg-3 col-form-label">Gemeinsame Frist zur Einreichung von Kandidaturen,
       zur Einreichung von Briefwahlanträgen, und
@@ -177,38 +197,40 @@ const addPollingPlace = () => {
     </tfoot>
   </table>
 
-  <p>Wahllokale</p>
+  <template v-if="!electionProperties.plenum">
+    <p>Wahllokale</p>
 
-  <p class="text-muted">
-    Mindestens eins an jedem Wahltag
-  </p>
+    <p class="text-muted">
+      Mindestens eins an jedem Wahltag
+    </p>
 
 
-  <table id="pollingplaces_table" class="table table-striped table-hover">
-    <tbody>
-    <tr>
-      <th>Datum</th>
-      <th colspan="2">Uhrzeit</th>
-      <th>Ort (DE)</th>
-      <th>Ort (EN)</th>
-      <th></th>
-    </tr>
-    <template v-for="(place, index) in electionProperties.pollingPlaces">
-      <EditableEventPlaceRow :item="place" :remove="()=>{electionProperties.pollingPlaces.splice(index, 1)}"/>
-    </template>
-    </tbody>
-    <tfoot>
-    <tr>
-      <td colspan="5">
-        <button class="btn btn-outline-secondary btn-sm" @click="addPollingPlace">Hinzufügen</button>
-      </td>
-    </tr>
-    </tfoot>
-  </table>
+    <table id="pollingplaces_table" class="table table-striped table-hover">
+      <tbody>
+      <tr>
+        <th>Datum</th>
+        <th colspan="2">Uhrzeit</th>
+        <th>Ort (DE)</th>
+        <th>Ort (EN)</th>
+        <th></th>
+      </tr>
+      <template v-for="(place, index) in electionProperties.pollingPlaces">
+        <EditableEventPlaceRow :item="place" :remove="()=>{electionProperties.pollingPlaces.splice(index, 1)}"/>
+      </template>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5">
+          <button class="btn btn-outline-secondary btn-sm" @click="addPollingPlace">Hinzufügen</button>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
 
-  <CountingOptions/>
+    <CountingOptions/>
 
-  <ConstituentAssemblyOptions/>
+    <ConstituentAssemblyOptions/>
+  </template>
 
   <ElectionSupervisorOptions/>
 

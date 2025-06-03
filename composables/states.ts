@@ -4,10 +4,13 @@ import {createGlobalState, useLocalStorage} from "@vueuse/core";
 
 export const initialValue = () => {
     return {
-        stateVersion: 1,
+        stateVersion: 2,
         fsName: '',
         dateStart: null,
         dateEnd: null,
+        timeStartPlenum: null,
+        locationPlenumDE: null,
+        locationPlenumEN: null,
         eligibleVoters: null,
         alwaysFsv: false,
         fsrMembersNumberOverride: false,

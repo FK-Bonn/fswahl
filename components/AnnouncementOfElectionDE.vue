@@ -20,30 +20,33 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
     <span class="diedenfsvfsr">{{ prop.committeeDeterminerAccusative }}</span> <span
         class="fsvfsr">{{ prop.committeeName }}</span> zu wählen.</p>
 
-  <p v-if="electionProperties.plenum">Die Wahl findet am <span class="wahlzeitraum">{{ prop.firstElectionDay }}</span>
-    als Wahlvollversammlung statt.</p>
+  <p v-if="electionProperties.plenum">Die Wahl findet am <b><span class="wahlzeitraum">{{ prop.firstElectionDay }}</span></b>
+    ab <b>{{electionProperties.timeStartPlenum }} Uhr</b> als <b>Wahlvollversammlung
+    </b> {{electionProperties.locationPlenumDE}} statt.</p>
   <p v-else>Die Wahl findet im Zeitraum <span class="wahlzeitraum">vom
-          {{ prop.firstElectionDay }} bis zum
-          {{ prop.lastElectionDay }}</span> statt.</p>
+          <b>{{ prop.firstElectionDay }}</b> bis zum
+          <b>{{ prop.lastElectionDay }}</b></span> statt.</p>
 
-  <h3>Ort und Zeit der Stimmabgabe</h3>
+  <template v-if="!electionProperties.plenum">
+    <h3>Ort und Zeit der Stimmabgabe</h3>
 
-  <p>Das Wahllokal ist zu folgenden Zeiten an folgenden Orten geöffnet:</p>
+    <p>Das Wahllokal ist zu folgenden Zeiten an folgenden Orten geöffnet:</p>
 
-  <table id="urnenstandorte_table" class="table table-striped table-hover">
-    <thead>
-    <tr>
-      <th>Datum</th>
-      <th colspan="2">Uhrzeit</th>
-      <th>Ort</th>
-    </tr>
-    </thead>
-    <tbody>
-    <template v-for="place in electionProperties.pollingPlaces">
-      <EventPlaceRowDE :event-place="place"/>
-    </template>
-    </tbody>
-  </table>
+    <table id="urnenstandorte_table" class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Datum</th>
+        <th colspan="2">Uhrzeit</th>
+        <th>Ort</th>
+      </tr>
+      </thead>
+      <tbody>
+      <template v-for="place in electionProperties.pollingPlaces">
+        <EventPlaceRowDE :event-place="place"/>
+      </template>
+      </tbody>
+    </table>
+  </template>
 
   <h3>Kandiaturen</h3>
 
@@ -165,13 +168,13 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
   <h3>Konstituierende Sitzung</h3>
 
   <p v-if="electionProperties.plenum">
-    Die konstituierende Sitzung <span class="derdesfsvfsr">{{prop.committeeDeterminerGenitive}}</span> neu
-    gewählten <span class="fsvfsr">{{prop.committeeNameGenitive}}</span>
+    Die konstituierende Sitzung <span class="derdesfsvfsr">{{ prop.committeeDeterminerGenitive }}</span> neu
+    gewählten <span class="fsvfsr">{{ prop.committeeNameGenitive }}</span>
     findet während der Wahlvollversammlung direkt nach Bekanntgabe des Wahlergebnisses statt.
   </p>
 
-  <p v-else>Die konstituierende Sitzung <span class="derdesfsvfsr">{{prop.committeeDeterminerGenitive}}</span> neu
-    gewählten <span class="fsvfsr">{{prop.committeeNameGenitive}}</span>
+  <p v-else>Die konstituierende Sitzung <span class="derdesfsvfsr">{{ prop.committeeDeterminerGenitive }}</span> neu
+    gewählten <span class="fsvfsr">{{ prop.committeeNameGenitive }}</span>
     findet am <span class="datum_konstituierende_sitzung">{{ prop.constituentAssemblyDate }}</span> <span
         class="uhrzeit_konstituierende_sitzung">{{ prop.constituentAssemblyTime }}</span> Uhr <span
         class="ort_konstituierende_sitzung">{{ electionProperties.constituentAssemblyLocationDE }}</span>

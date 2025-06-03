@@ -11,14 +11,8 @@ const collectErrors = () => {
   if (!electionProperties.value.dateStart) {
     errors.push('Der erste Wahltag')
   }
-  if (!electionProperties.value.dateEnd && !electionProperties.value.plenum) {
-    errors.push('Der letzte Wahltag')
-  }
   if (!electionProperties.value.eligibleVoters) {
     errors.push('Die Anzahl der Wahlberechtigten')
-  }
-  if (electionProperties.value.pollingPlaces.length < 3) {
-    errors.push('Urnenöffnungszeiten für alle Wahltage')
   }
   if (electionProperties.value.electoralRegisterPlaces.length < 3) {
     errors.push('Die Auslage des Wählendenverzeichnisses (mind. 3 Tage)')
@@ -26,23 +20,41 @@ const collectErrors = () => {
   if (!electionProperties.value.mainDeadline) {
     errors.push('Die gemeinsame Frist zur Einreichung von Kandidaturen, zur Einreichung von Briefwahlanträgen, und zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis')
   }
-  if (!electionProperties.value.countingDateTime) {
-    errors.push('Der Zeitpunkt der Auszählung')
-  }
-  if (!electionProperties.value.countingLocationDE) {
-    errors.push('Der Ort der Auszählung (deutsch)')
-  }
-  if (!electionProperties.value.countingLocationEN) {
-    errors.push('Der Ort der Auszählung (englisch)')
-  }
-  if (!electionProperties.value.constituentAssemblyDateTime) {
-    errors.push('Der Zeitpunkt der konstituierenden Sitzung')
-  }
-  if (!electionProperties.value.constituentAssemblyLocationDE) {
-    errors.push('Der Ort der konstituierenden Sitzung (deutsch)')
-  }
-  if (!electionProperties.value.constituentAssemblyLocationEN) {
-    errors.push('Der Ort der konstituierenden Sitzung (englisch)')
+  if(electionProperties.value.plenum) {
+    if (!electionProperties.value.timeStartPlenum) {
+      errors.push('Beginn des Plenums (Uhrzeit)')
+    }
+    if (!electionProperties.value.locationPlenumDE) {
+      errors.push('Ort der Wahlvollversammlung (DE)')
+    }
+    if (!electionProperties.value.locationPlenumEN) {
+      errors.push('Ort der Wahlvollversammlung (EN)')
+    }
+  } else {
+    if (!electionProperties.value.dateEnd) {
+      errors.push('Der letzte Wahltag')
+    }
+    if (electionProperties.value.pollingPlaces.length < 3) {
+      errors.push('Urnenöffnungszeiten für alle Wahltage')
+    }
+    if (!electionProperties.value.countingDateTime) {
+      errors.push('Der Zeitpunkt der Auszählung')
+    }
+    if (!electionProperties.value.countingLocationDE) {
+      errors.push('Der Ort der Auszählung (deutsch)')
+    }
+    if (!electionProperties.value.countingLocationEN) {
+      errors.push('Der Ort der Auszählung (englisch)')
+    }
+    if (!electionProperties.value.constituentAssemblyDateTime) {
+      errors.push('Der Zeitpunkt der konstituierenden Sitzung')
+    }
+    if (!electionProperties.value.constituentAssemblyLocationDE) {
+      errors.push('Der Ort der konstituierenden Sitzung (deutsch)')
+    }
+    if (!electionProperties.value.constituentAssemblyLocationEN) {
+      errors.push('Der Ort der konstituierenden Sitzung (englisch)')
+    }
   }
   if (!electionProperties.value.supervisorName) {
     errors.push('Der Name der Wahlleitung')

@@ -13,35 +13,38 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
     <span
         class="fachschaft">{{ electionProperties.fsName }}</span></h2>
 
-  <p>The student representatives (<span class="fsvfsr">{{ prop.committeeName }}</span>) for the Fachschaft<span
+  <p>The student representatives (<span class="fsvfsr">{{ prop.committeeName }}</span>) for the Fachschaft <span
       class="fachschaft">{{ electionProperties.fsName }}</span>
-    at the university of Bonn will be elected.</p>
+    at the University of Bonn will be elected.</p>
 
   <p><b><span class="zahl_sitze">{{ prop.seats }}</span> representatives</b> will be elected in total.</p>
 
-  <p v-if="electionProperties.plenum">The election will take place as an election plenum
-    on <span class="wahlzeitraum_engl">{{ prop.firstElectionDay }}</span>.</p>
+  <p v-if="electionProperties.plenum">The election will take place as an <b>election plenum</b>
+    on <b><span class="wahlzeitraum_engl">{{ prop.firstElectionDay }}</span></b>,
+    starting at <b>{{ electionProperties.timeStartPlenum }} o'clock</b> {{ electionProperties.locationPlenumEN }}.</p>
   <p v-else>The election will take place <span class="wahlzeitraum_engl">
-    from {{ prop.firstElectionDay }} to {{ prop.lastElectionDay }}</span></p>
+    from <b>{{ prop.firstElectionDay }}</b> to <b>{{ prop.lastElectionDay }}</b></span></p>
 
-  <h3>Polling Stations</h3>
+  <template v-if="!electionProperties.plenum">
+    <h3>Polling Stations</h3>
 
-  <p>For information regarding the polling station please look at the list below:</p>
+    <p>For information regarding the polling station please look at the list below:</p>
 
-  <table id="urnenstandorte_table" class="table table-striped table-hover">
-    <thead>
-    <tr>
-      <th>Date</th>
-      <th colspan="2">Time</th>
-      <th>Location</th>
-    </tr>
-    </thead>
-    <tbody>
-    <template v-for="pollingPlace in electionProperties.pollingPlaces">
-      <EventPlaceRowEN :event-place="pollingPlace"/>
-    </template>
-    </tbody>
-  </table>
+    <table id="urnenstandorte_table" class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th colspan="2">Time</th>
+        <th>Location</th>
+      </tr>
+      </thead>
+      <tbody>
+      <template v-for="pollingPlace in electionProperties.pollingPlaces">
+        <EventPlaceRowEN :event-place="pollingPlace"/>
+      </template>
+      </tbody>
+    </table>
+  </template>
 
   <h3>Candidacies</h3>
 
