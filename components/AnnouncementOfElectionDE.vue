@@ -48,12 +48,12 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
     </table>
   </template>
 
-  <h3>Kandiaturen</h3>
+  <h3>Kandidaturen</h3>
 
-  <p><b>Musterformulare für Kandiaturen sind bei der Wahlleitung erhältlich.<br>
+  <p><b>Musterformulare für Kandidaturen sind bei der Wahlleitung erhältlich.<br>
     Ihre Verwendung wird empfohlen.</b></p>
 
-  <p>Kandiaturen sind bis zum
+  <p>Kandidaturen sind bis zum
     <b><span class="frist_einreichung_wahlvorschlaege">{{ prop.mainDeadlineDate }}</span>
     </b> um <b><span class="frist_einreichung_wahlvorschlaege_uhrzeit"
     >{{ prop.mainDeadlineTime }}</span> Uhr</b> bei der <b>Wahlleitung</b> einzureichen.
