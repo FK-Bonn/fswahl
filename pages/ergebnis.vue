@@ -86,7 +86,7 @@ const addIndividualVote = () => {
 
   <div id="wahlergebnis">
     <h2> Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}
-    </span> <span class="fsvfsr">{{ propDE.committeeName }}</span> der Fachschaft <span
+    </span> <span class="fsvfsr">{{ propDE.committeeNameGenitive }}</span> der Fachschaft <span
         class="fachschaft">{{ electionProperties.fsName }}</span> der
       Rheinischen Friedrich-Wilhelms-Universität Bonn </h2>
     <h3>Election of the student representatives for Fachschaft <span
@@ -101,7 +101,7 @@ const addIndividualVote = () => {
     <div class="row" v-if="electionProperties.plenum">
       <div class="col-sm-6">
         <p>Das Ergebnis der Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}</span> <span
-            class="fsvfsr">{{ propDE.committeeName }}</span>
+            class="fsvfsr">{{ propDE.committeeNameGenitive }}</span>
           der Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span> <span
               class="wahlzeitraum">am {{ propDE.firstElectionDay }}</span> lautet wie folgt.</p>
       </div>
@@ -115,7 +115,7 @@ const addIndividualVote = () => {
     <div class="row" v-else>
       <div class="col-sm-6">
         <p>Das Ergebnis der Wahl <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}</span> <span
-            class="fsvfsr">{{ propDE.committeeName }}</span>
+            class="fsvfsr">{{ propDE.committeeNameGenitive }}</span>
           der Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span> <span
               class="wahlzeitraum">vom {{ propDE.firstElectionDay }} bis zum {{ propDE.lastElectionDay }}</span>
           lautet wie folgt.</p>
@@ -258,7 +258,7 @@ const addIndividualVote = () => {
         <h3>Konstituierende Sitzung</h3>
 
         <p>Die konstituierende Sitzung <span class="derdesfsvfsr">{{ propDE.committeeDeterminerGenitive }}</span> neu
-          gewählten <span class="fsvfsr">{{ propDE.committeeName }}</span>
+          gewählten <span class="fsvfsr">{{ propDE.committeeNameGenitive }}</span>
           findet am <span class="datum_konstituierende_sitzung">{{ propDE.constituentAssemblyDate }}</span> um <span
               class="uhrzeit_konstituierende_sitzung">{{ propDE.constituentAssemblyTime }}</span> Uhr <span
               class="ort_konstituierende_sitzung">{{ electionProperties.constituentAssemblyLocationDE }}</span>
