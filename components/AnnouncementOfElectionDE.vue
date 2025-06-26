@@ -11,6 +11,8 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
       class="fsvfsr">{{ prop.committeeNameGenitive }}</span> der Fachschaft
     <span class="fachschaft">{{ electionProperties.fsName }}</span></h2>
 
+  <h5>Bonn, {{ dateDE(new Date()) }}</h5>
+
   <p>Gewählt wird <span class="diederfsvfsr">{{ prop.committeeDeterminer }}
         </span> <b><span class="fsvfsr">{{ prop.committeeName }}</span> der
     Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span></b>
@@ -191,7 +193,7 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
 </template>
 
 <style scoped>
-h1, h2 {
+h1, h2, h5 {
   text-align: center;
 }
 </style>

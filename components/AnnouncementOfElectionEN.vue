@@ -13,6 +13,8 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
     <span
         class="fachschaft">{{ electionProperties.fsName }}</span></h2>
 
+  <h5>Bonn, {{ dateEN(new Date()) }}</h5>
+
   <p>The student representatives (<span class="fsvfsr">{{ prop.committeeName }}</span>) for the Fachschaft <span
       class="fachschaft">{{ electionProperties.fsName }}</span>
     at the University of Bonn will be elected.</p>
@@ -177,7 +179,7 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
 </template>
 
 <style scoped>
-h1, h2 {
+h1, h2, h5 {
   text-align: center;
 }
 </style>
