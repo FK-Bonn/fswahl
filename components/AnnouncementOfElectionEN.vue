@@ -103,8 +103,11 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
   <p>Every member of the Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span>
     at the university of Bonn by <b><span class="frist_wahlberechtigung">{{ prop.eligibilityDeadline }}</span></b> is
     eligible to vote and to be elected.
-    If you are a member of multiple student bodies, you are only eligible to vote for a single one.
-    Visiting students are not eligible to vote.</p>
+    Whether you are a member or not is determined by the rules in the Studierendenschaftsgliederungssatzung,
+    and depends on the subject degree combinations that you are enrolled for.
+    Visiting students are not eligible to vote or to be elected.
+    Students on leave of absence who still pay semester fees are eligible to vote and to be elected.
+  </p>
 
   <p>Everyone who is listed in the electoral register is eligible to vote.</p>
 

@@ -103,12 +103,13 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
 
   <h3>Wählendenverzeichnis</h3>
 
-  <p>Wahlberechtigt und wählbar sind die Mitglieder der Fachschaft <span
-      class="fachschaft">{{ electionProperties.fsName }}</span>, die am
-    <b><span class="frist_wahlberechtigung">{{ prop.eligibilityDeadline }}</span></b> an
-    der Rheinischen Friedrich-Wilhelms-Universität Bonn
-    eingeschrieben sind. Maßgeblich für die Wahlberechtigung ist darüber hinaus das bei der Immatrikulation oder
-    der Rückmeldung für die Wahlberechtigung angegebene Fach. Zweithörer und Gasthörer sind nicht wahlberechtigt.
+  <p>Wahlberechtigt und wählbar sind die Personen, die
+    am <b><span class="frist_wahlberechtigung">{{ prop.eligibilityDeadline }}</span></b> Mitglied der
+    Fachschaft <span class="fachschaft">{{ electionProperties.fsName }}</span> sind.
+    Maßgeblich für die Zuordnung ist die Studierendenschaftsgliederungssatzung in der jeweils geltenden
+    Fassung.
+    Zweit- und Gasthörerinnen sind nicht wahlberechtigt.
+    Beitragspflichtige beurlaubte Stuiderende sind wahlberechtigt.
   </p>
 
   <p>Wählen kann nur, wer im Wählendenverzeichnis eingetragen ist.</p>
