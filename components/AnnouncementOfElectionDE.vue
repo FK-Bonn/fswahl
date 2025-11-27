@@ -109,7 +109,7 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
     Maßgeblich für die Zuordnung ist die Studierendenschaftsgliederungssatzung in der jeweils geltenden
     Fassung.
     Zweit- und Gasthörerinnen sind nicht wahlberechtigt.
-    Beitragspflichtige beurlaubte Stuiderende sind wahlberechtigt.
+    Beitragspflichtige beurlaubte Studierende sind wahlberechtigt.
   </p>
 
   <p>Wählen kann nur, wer im Wählendenverzeichnis eingetragen ist.</p>
