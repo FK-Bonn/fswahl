@@ -21,7 +21,7 @@ const calculatedElectionProperties = computed(() => new PropertyCalculator(elect
       <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A710">§ 10 Abs. 2</a></td>
     </tr>
     <tr>
-      <td>Wahl des Wahlleiters und des Wahlausschusses</td>
+      <td>Wahl der Wahlleiterin und des Wahlausschusses</td>
       <td>bis <span id="wlundwa">{{ calculatedElectionProperties.electSupervisorAndCommittee }}</span></td>
       <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A711">§ 11 Abs. 2</a></td>
     </tr>
