@@ -26,6 +26,11 @@ const calculatedElectionProperties = computed(() => new PropertyCalculator(elect
       <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A711">§ 11 Abs. 2</a></td>
     </tr>
     <tr>
+      <td>Beantragung des Wählendenverzeichnisses beim Fachschaftenkollektiv</td>
+      <td>↖ <i>unmittelbar nach diesen beiden</i></td>
+      <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A714">§ 14 Abs. 1</a></td>
+    </tr>
+    <tr>
       <td>Stichtag Wahlberechtigung</td>
       <td id="stwber">{{ calculatedElectionProperties.eligibilityDeadline }}</td>
       <td><a href="https://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#%C2%A79">§ 9 Abs. 1</a></td>
