@@ -26,6 +26,44 @@ const addPollingPlace = () => {
     locationEN: '',
   })
 }
+const fsNames = [
+  "Agrarwissenschaften",
+  "Anglistik, Amerikanistik und Keltologie",
+  "Archäologie",
+  "Biologie",
+  "Chemie",
+  "ELW",
+  "Ethnologie / Altamerikanistik",
+  "Evangelische Theologie",
+  "GeKoSka",
+  "Geodäsie",
+  "Geographie",
+  "Geowissenschaften",
+  "Geschichte",
+  "Informatik",
+  "Interkulturelle Kommunikation und Mehrsprachigkeitsforschung (IKM)",
+  "Jura",
+  "Katholische Theologie",
+  "Klassische und Romanische Philologie",
+  "Kulturanthropologie",
+  "Kunstgeschichte",
+  "Lehramt",
+  "Mathematik",
+  "Medienwissenschaft",
+  "Medizin",
+  "Meteorologie und Geophysik",
+  "Molekulare Biomedizin",
+  "Musikwissenschaften/Sound Studies",
+  "Neuroscience",
+  "OrientAsia",
+  "Pharmazie",
+  "Philosophie",
+  "Physik/Astronomie",
+  "Politik & Soziologie",
+  "Psychologie",
+  "VWL",
+  "Zahnmedizin",
+]
 </script>
 
 <template>
@@ -41,7 +79,11 @@ const addPollingPlace = () => {
     <div class="col-lg-9">
       <div class="input-group">
         <span class="input-group-text" id="fs-addon">Fachschaft</span>
-        <input type="text" class="form-control" id="fs-name" v-model="electionProperties.fsName">
+        <select class="form-select" id="fs-name" v-model="electionProperties.fsName">
+          <template v-for="fsName in fsNames" :key="fsName">
+            <option :value="fsName">{{ fsName }}</option>
+          </template>
+        </select>
       </div>
     </div>
   </div>
