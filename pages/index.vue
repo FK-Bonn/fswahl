@@ -4,6 +4,7 @@ import CountingOptions from "~/components/options/CountingOptions.vue";
 import ConstituentAssemblyOptions from "~/components/options/ConstituentAssemblyOptions.vue";
 import ElectionSupervisorOptions from "~/components/options/ElectionSupervisorOptions.vue";
 import ValidationErrors from "~/components/alerts/ValidationErrors.vue";
+import ForbiddenDatesOutdatedWarning from "~/components/alerts/ForbiddenDatesOutdatedWarning.vue";
 
 const electionProperties = useElectionProperties();
 const calculatedElectionProperties = computed(() => new PropertyCalculator(electionProperties.value))
@@ -67,6 +68,8 @@ const fsNames = [
 </script>
 
 <template>
+
+  <ForbiddenDatesOutdatedWarning/>
 
   <ValidationErrors/>
 
