@@ -243,6 +243,21 @@ export const checkForbiddenDates = (prop: ElectionProperties) => {
             }
         }
     }
+    // check if there is a possible main deadline
+    if (prop.dateStart) {
+        const mainDeadlineStart = new Date(prop.dateStart);
+        const mainDeadlineEnd = new Date(prop.dateStart);
+        mainDeadlineStart.setDate(mainDeadlineStart.getDate() - 13);
+        mainDeadlineEnd.setDate(mainDeadlineEnd.getDate() - 10);
+        const range = getDateRange(mainDeadlineStart, mainDeadlineEnd).map(value => value.toISOString().substring(0, 10));
+        if (!range.some(value => getForbiddenDateTitle(value) === null)) {
+            let message = `Es gibt kein legales Datum für die gemeinsame Frist
+             zur Einreichung von Kandidaturen, zur Einreichung von Briefwahlanträgen,
+             und zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis: `;
+            message += range.map(value => value + ': ' + getForbiddenDateTitle(value)).join(', ');
+            messages.push(message)
+        }
+    }
 
     // check if main deadline is a forbidden day
     if (prop.mainDeadline) {
