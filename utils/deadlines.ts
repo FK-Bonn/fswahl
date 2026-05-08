@@ -102,6 +102,15 @@ export class PropertyCalculator {
         return this.afterElection(0);
     }
 
+    get defaultLastElectionDay(): string {
+        if (this.properties.dateStart) {
+            const date = new Date(this.properties.dateStart);
+            date.setDate(date.getDate() + 2)
+            return date.toISOString().substring(0, 10);
+        }
+        return '';
+    }
+
     get initialMeetingEarliest(): string {
         return this.afterElection(5);
     }

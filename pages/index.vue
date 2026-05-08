@@ -65,6 +65,13 @@ const fsNames = [
   "VWL",
   "Zahnmedizin",
 ]
+
+watch(() => electionProperties.value.dateStart, async (newValue, oldValue) => {
+  if (newValue) {
+    electionProperties.value.dateEnd = calculatedElectionProperties.value.defaultLastElectionDay
+  }
+});
+
 </script>
 
 <template>
