@@ -98,6 +98,16 @@ watch(() => electionProperties.value.dateStart, async (newValue, oldValue) => {
     </div>
   </div>
   <div class="row mb-3">
+    <label for="eligible-voters" class="col-lg-3 col-form-label">
+      Anzahl der Wahlberechtigten laut Wählendenverzeichnis</label>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" id="eligible-voters" v-model="electionProperties.eligibleVoters">
+      <div class="form-text">
+        Für die Planung bitte die Größenordnung schätzen und geschätzte Zahl eintragen.
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
     <label for="datestart" class="col-lg-3 col-form-label">Erster Wahltag</label>
     <div class="col-lg-2">
       <input type="date" class="form-control" id="datestart" v-model="electionProperties.dateStart">
@@ -113,13 +123,6 @@ watch(() => electionProperties.value.dateStart, async (newValue, oldValue) => {
     </div>
     <div class="col-lg-2 text-success">
       {{ calculatedElectionProperties.dateEndWeekday }}
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="eligible-voters" class="col-lg-3 col-form-label">
-      Anzahl der Wahlberechtigten laut Wählendenverzeichnis</label>
-    <div class="col-lg-2">
-      <input type="number" class="form-control" id="eligible-voters" v-model="electionProperties.eligibleVoters">
     </div>
   </div>
   <div class="row mb-3" v-if="calculatedElectionProperties.checkAlwaysFSV">
@@ -222,7 +225,7 @@ watch(() => electionProperties.value.dateStart, async (newValue, oldValue) => {
   <p>Auslegung des Wählendenverzeichnisses</p>
 
   <p class="text-muted">
-    Mindestens drei Tage vor der gemeinsamen Frist zur Einreichung von Kandidaturen,
+    An mindestens drei Tagen vor der gemeinsamen Frist zur Einreichung von Kandidaturen,
     zur Einreichung von Briefwahlanträgen, und
     zur Einreichung von Einsprüchen gegen das Wählendenverzeichnis.
   </p>
