@@ -73,12 +73,13 @@ export const checkLastDayIsWedThuFri = (prop: ElectionProperties, calc: Property
 // Main Deadline on days 10-13 before first election day § 13 (5)
 export const checkMainDeadline = (prop: ElectionProperties) => {
     if (prop.dateStart && prop.mainDeadline) {
-        const first = new Date(prop.dateStart);
-        first.setHours(0, 0, 0, 0);
-        const mainDeadline = new Date(prop.mainDeadline);
-        mainDeadline.setHours(0, 0, 0, 0);
-        const diff = (first - mainDeadline) / (1000 * 60 * 60 * 24);
-        return 10 <= diff && diff <= 13;
+        const day = new Date(prop.dateStart + 'T00:00:00.000Z');
+        const mainDeadlineDate = prop.mainDeadline.substring(0, 10);
+        day.setUTCDate(day.getUTCDate() - 10);
+        const latestPossibleDeadlineDate = day.toISOString().substring(0, 10);
+        day.setUTCDate(day.getUTCDate() - 3);
+        const earliestPossibleDeadlineDate = day.toISOString().substring(0, 10);
+        return earliestPossibleDeadlineDate <= mainDeadlineDate && mainDeadlineDate <= latestPossibleDeadlineDate;
     }
     return true;
 }
