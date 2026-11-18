@@ -60,8 +60,6 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
   <p>The candidacy must at least contain the following aspects: name, surname, how the name should be written on the
     ballot, address, email address, matriculation number, the title of the election, and a signature.</p>
 
-  <p>The candidacy must be written in German.</p>
-
   <p>For further informations on the requirements please refer to § 16 FSWO (cf.
     http://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#§14)</p>
 
