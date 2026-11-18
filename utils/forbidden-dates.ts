@@ -33,4 +33,12 @@ export const FORBIDDEN_DATES: ForbiddenDate[] = [
     {start: '2026-07-25', end: '2026-10-11', title: 'Vorlesungsfreie Zeit'},
     {start: '2026-11-01', end: '2026-11-01', title: 'Allerheiligen'},
     {start: '2026-12-24', end: '2027-01-06', title: 'Weihnachtsferien'},
+    {start: '2027-02-06', end: '2027-04-04', title: 'Vorlesungsfreie Zeit'},
+    {start: '2027-05-06', end: '2027-05-06', title: 'Christi Himmelfahrt'},
+    {start: '2027-05-17', end: '2027-05-21', title: 'Pfingstferien'},
+    {start: '2027-05-27', end: '2027-05-27', title: 'Fronleichnam'},
+    {start: '2027-07-17', end: '2027-10-10', title: 'Vorlesungsfreie Zeit'},
+    {start: '2027-11-01', end: '2027-11-01', title: 'Allerheiligen'},
+    {start: '2027-12-24', end: '2028-01-06', title: 'Weihnachtsferien'},
+    {start: '2028-02-05', end: '2028-04-16', title: 'Vorlesungsfreie Zeit'},
 ]
