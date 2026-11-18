@@ -65,7 +65,7 @@ const prop = computed(() => new PropertyCalculator(electionProperties.value))
     stehen soll, ladungsfähige Anschrift, E-Mail-Adresse, Matrikelnummer und Unterschrift der kandidierenden
     Person, sowie Bezeichnung der Wahl, für die die Kandidatur gelten soll</p>
 
-  <p>(Die Anforderungen an einen Wahlvorschlag ergeben sich aus § 14 FSWO (Siehe
+  <p>(Die Anforderungen an einen Wahlvorschlag ergeben sich aus § 16 FSWO (Siehe
     http://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#§14)</p>
 
   <p v-if="electionProperties.plenum">Ebenso ist es möglich, auf der Wahlvollversammlung die Kandidatur zu erklären.</p>

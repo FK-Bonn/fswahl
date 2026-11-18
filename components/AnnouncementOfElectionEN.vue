@@ -62,7 +62,7 @@ const prop = computed(() => new PropertyCalculatorEN(electionProperties.value))
 
   <p>The candidacy must be written in German.</p>
 
-  <p>For further informations on the requirements please refer to §14 FSWO (cf.
+  <p>For further informations on the requirements please refer to § 16 FSWO (cf.
     http://sp.uni-bonn.de/dokumente/idx/Ordnungen/FSWO.html#§14)</p>
 
 
